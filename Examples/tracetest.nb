@@ -1,0 +1,1162 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     41171,       1153]
+NotebookOptionsPosition[     37371,       1030]
+NotebookOutlinePosition[     38146,       1058]
+CellTagsIndexPosition[     38018,       1052]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<FeynCalcFormLink`\>\"", "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Simple traces", "Section",
+ CellChangeTimes->{{3.5640314582967005`*^9, 3.564031469398716*^9}}],
+
+Cell[BoxData[
+ RowBox[{"FeynCalcFormLink", "[", 
+  RowBox[{"DiracTrace", "[", "1", "]"}], "]"}]], "Input"],
+
+Cell["\<\
+Format Mathematica;
+L resFL = (gi_(1));
+trace4,1;
+contract 0;
+.sort;
+#call put(\"%E\", resFL)
+#fromexternal\
+\>", "Program",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox["\<\"Piping the script to FORM and running FORM\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Time needed by FORM : \"\>", "\[InvisibleSpace]", "0.`", 
+    "\[InvisibleSpace]", "\<\" seconds. FORM finished. Got the result back to \
+Mathematica as a string.\"\>"}],
+   SequenceForm[
+   "Time needed by FORM : ", 0., 
+    " seconds. FORM finished. Got the result back to Mathematica as a \
+string."],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox["\<\"Start translation to Mathematica / FeynCalc syntax\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Total wall clock time used: \"\>", "\[InvisibleSpace]", 
+    "0.17`", "\[InvisibleSpace]", "\<\" seconds. Translation to Mathematica \
+and FeynCalc finished.\"\>"}],
+   SequenceForm[
+   "Total wall clock time used: ", 0.17, 
+    " seconds. Translation to Mathematica and FeynCalc finished."],
+   Editable->False], TraditionalForm]], "Print"]
+}, Open  ]],
+
+Cell[BoxData[
+ FormBox["4", TraditionalForm]], "Output",
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[BoxData[
+ RowBox[{"FeynCalcFormLink", "[", 
+  RowBox[{"DiracTrace", "[", "2", "]"}], "]"}]], "Input"],
+
+Cell["\<\
+Format Mathematica;
+L resFL = (2*gi_(1));
+trace4,1;
+contract 0;
+.sort;
+#call put(\"%E\", resFL)
+#fromexternal\
+\>", "Program",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox["\<\"Piping the script to FORM and running FORM\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Time needed by FORM : \"\>", "\[InvisibleSpace]", "0.`", 
+    "\[InvisibleSpace]", "\<\" seconds. FORM finished. Got the result back to \
+Mathematica as a string.\"\>"}],
+   SequenceForm[
+   "Time needed by FORM : ", 0., 
+    " seconds. FORM finished. Got the result back to Mathematica as a \
+string."],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox["\<\"Start translation to Mathematica / FeynCalc syntax\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Total wall clock time used: \"\>", "\[InvisibleSpace]", 
+    "0.14`", "\[InvisibleSpace]", "\<\" seconds. Translation to Mathematica \
+and FeynCalc finished.\"\>"}],
+   SequenceForm[
+   "Total wall clock time used: ", 0.14, 
+    " seconds. Translation to Mathematica and FeynCalc finished."],
+   Editable->False], TraditionalForm]], "Print"]
+}, Open  ]],
+
+Cell[BoxData[
+ FormBox["8", TraditionalForm]], "Output",
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[BoxData[
+ RowBox[{"FeynCalcFormLink", "[", 
+  RowBox[{"DiracTrace", "[", "m", "]"}], "]"}]], "Input"],
+
+Cell["\<\
+Symbol m;
+Format Mathematica;
+L resFL = (m*gi_(1));
+trace4,1;
+contract 0;
+.sort;
+#call put(\"%E\", resFL)
+#fromexternal\
+\>", "Program",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox["\<\"Piping the script to FORM and running FORM\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Time needed by FORM : \"\>", "\[InvisibleSpace]", "0.`", 
+    "\[InvisibleSpace]", "\<\" seconds. FORM finished. Got the result back to \
+Mathematica as a string.\"\>"}],
+   SequenceForm[
+   "Time needed by FORM : ", 0., 
+    " seconds. FORM finished. Got the result back to Mathematica as a \
+string."],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox["\<\"Start translation to Mathematica / FeynCalc syntax\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Total wall clock time used: \"\>", "\[InvisibleSpace]", 
+    "0.16`", "\[InvisibleSpace]", "\<\" seconds. Translation to Mathematica \
+and FeynCalc finished.\"\>"}],
+   SequenceForm[
+   "Total wall clock time used: ", 0.16, 
+    " seconds. Translation to Mathematica and FeynCalc finished."],
+   Editable->False], TraditionalForm]], "Print"]
+}, Open  ]],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"4", " ", "m"}], TraditionalForm]], "Output",
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[BoxData[
+ RowBox[{"FeynCalcFormLink", "[", 
+  RowBox[{"DiracTrace", "[", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"m", " ", "+", " ", 
+      RowBox[{"GS", "[", "p", "]"}]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{"M", " ", "+", " ", 
+      RowBox[{"GS", "[", "q", "]"}]}], ")"}]}], "]"}], "]"}]], "Input"],
+
+Cell["\<\
+Symbols m,M;
+Vectors p,q;
+Format Mathematica;
+L resFL = ((m*gi_(1)+g_(1,p))*(M*gi_(1)+g_(1,q)));
+trace4,1;
+contract 0;
+.sort;
+#call put(\"%E\", resFL)
+#fromexternal\
+\>", "Program",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox["\<\"Piping the script to FORM and running FORM\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Time needed by FORM : \"\>", "\[InvisibleSpace]", "0.`", 
+    "\[InvisibleSpace]", "\<\" seconds. FORM finished. Got the result back to \
+Mathematica as a string.\"\>"}],
+   SequenceForm[
+   "Time needed by FORM : ", 0., 
+    " seconds. FORM finished. Got the result back to Mathematica as a \
+string."],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox["\<\"Start translation to Mathematica / FeynCalc syntax\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Total wall clock time used: \"\>", "\[InvisibleSpace]", 
+    "0.17`", "\[InvisibleSpace]", "\<\" seconds. Translation to Mathematica \
+and FeynCalc finished.\"\>"}],
+   SequenceForm[
+   "Total wall clock time used: ", 0.17, 
+    " seconds. Translation to Mathematica and FeynCalc finished."],
+   Editable->False], TraditionalForm]], "Print"]
+}, Open  ]],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"4", " ", "m", " ", "M"}], "+", 
+   RowBox[{"4", " ", 
+    FormBox[
+     RowBox[{
+      FormBox["p",
+       TraditionalForm], "\[CenterDot]", 
+      FormBox["q",
+       TraditionalForm]}],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FeynCalcFormLink", "[", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"m", " ", "+", " ", 
+       RowBox[{"GS", "[", "p", "]"}]}], ")"}], ".", 
+     RowBox[{"(", 
+      RowBox[{"M", " ", "+", " ", 
+       RowBox[{"GS", "[", "q", "]"}]}], ")"}]}], "]"}], "]"}], "===", 
+  RowBox[{"Expand", "[", 
+   RowBox[{"FCE", "[", 
+    RowBox[{"TR", "[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"m", " ", "+", " ", 
+        RowBox[{"GS", "[", "p", "]"}]}], ")"}], ".", 
+      RowBox[{"(", 
+       RowBox[{"M", " ", "+", " ", 
+        RowBox[{"GS", "[", "q", "]"}]}], ")"}]}], "]"}], "]"}], 
+   "]"}]}]], "Input"],
+
+Cell["\<\
+Symbols m,M;
+Vectors p,q;
+Format Mathematica;
+L resFL = ((m*gi_(1)+g_(1,p))*(M*gi_(1)+g_(1,q)));
+trace4,1;
+contract 0;
+.sort;
+#call put(\"%E\", resFL)
+#fromexternal\
+\>", "Program",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox["\<\"Piping the script to FORM and running FORM\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Time needed by FORM : \"\>", "\[InvisibleSpace]", "0.`", 
+    "\[InvisibleSpace]", "\<\" seconds. FORM finished. Got the result back to \
+Mathematica as a string.\"\>"}],
+   SequenceForm[
+   "Time needed by FORM : ", 0., 
+    " seconds. FORM finished. Got the result back to Mathematica as a \
+string."],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox["\<\"Start translation to Mathematica / FeynCalc syntax\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Total wall clock time used: \"\>", "\[InvisibleSpace]", 
+    "0.17`", "\[InvisibleSpace]", "\<\" seconds. Translation to Mathematica \
+and FeynCalc finished.\"\>"}],
+   SequenceForm[
+   "Total wall clock time used: ", 0.17, 
+    " seconds. Translation to Mathematica and FeynCalc finished."],
+   Editable->False], TraditionalForm]], "Print"]
+}, Open  ]],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[BoxData[
+ RowBox[{"FeynCalcFormLink", "[", 
+  RowBox[{"DiracTrace", "[", 
+   RowBox[{"GA", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "5"}],
+     "]"}], "]"}], "]"}]], "Input"],
+
+Cell["\<\
+AutoDeclare Index lor;
+Format Mathematica;
+L resFL = (g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor4)*g5_(1));
+trace4,1;
+contract 0;
+.sort;
+#call put(\"%E\", resFL)
+#fromexternal\
+\>", "Program",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox["\<\"Piping the script to FORM and running FORM\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Time needed by FORM : \"\>", "\[InvisibleSpace]", "0.`", 
+    "\[InvisibleSpace]", "\<\" seconds. FORM finished. Got the result back to \
+Mathematica as a string.\"\>"}],
+   SequenceForm[
+   "Time needed by FORM : ", 0., 
+    " seconds. FORM finished. Got the result back to Mathematica as a \
+string."],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox["\<\"Start translation to Mathematica / FeynCalc syntax\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Total wall clock time used: \"\>", "\[InvisibleSpace]", 
+    "0.17`", "\[InvisibleSpace]", "\<\" seconds. Translation to Mathematica \
+and FeynCalc finished.\"\>"}],
+   SequenceForm[
+   "Total wall clock time used: ", 0.17, 
+    " seconds. Translation to Mathematica and FeynCalc finished."],
+   Editable->False], TraditionalForm]], "Print"]
+}, Open  ]],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"4", " ", 
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{"\[Mu]", "\[Nu]", "\[Rho]", "\[Sigma]"}]]}], 
+  TraditionalForm]], "Output",
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "$LeviCivitaSign"}]], "Input"],
+
+Cell[BoxData[
+ StyleBox["\<\"$LeviCivitaSign is by default set to -1 which corresponds to \
+the convention \\nTr[LeviCivita[a,b,c,d,5]] = -4*I*Eps[a,b,c,d].\\nSetting \
+$LeviCivitaSign=I  will switch to the FORM-convention.\"\>", "MSG"]], "Print",\
+ "PrintUsage",
+ CellTags->"Info3564524285-6692670"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$LeviCivitaSign"], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", "\[ImaginaryI]"}], TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TR", "[", 
+  RowBox[{"GA", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "5"}], 
+   "]"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"4", " ", 
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Sigma]",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FeynCalcFormLink", "[", 
+   RowBox[{
+    RowBox[{"DiracTrace", "[", 
+     RowBox[{"GA", "[", 
+      RowBox[{
+      "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Alpha]", 
+       ",", "\[Beta]", ",", "5"}], "]"}], "]"}], ",", 
+    RowBox[{"Print", "\[Rule]", "False"}]}], "]"}], "//", "Factor"}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"4", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{"\[Alpha]", "\[Beta]"}]], " ", 
+      SuperscriptBox["\[Epsilon]", 
+       RowBox[{"\[Mu]", "\[Nu]", "\[Rho]", "\[Sigma]"}]]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{"\[Alpha]", "\[Sigma]"}]], " ", 
+      SuperscriptBox["\[Epsilon]", 
+       RowBox[{"\[Mu]", "\[Nu]", "\[Rho]", "\[Beta]"}]]}], "-", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{"\[Beta]", "\[Sigma]"}]], " ", 
+      SuperscriptBox["\[Epsilon]", 
+       RowBox[{"\[Mu]", "\[Nu]", "\[Rho]", "\[Alpha]"}]]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{"\[Mu]", "\[Nu]"}]], " ", 
+      SuperscriptBox["\[Epsilon]", 
+       RowBox[{"\[Rho]", "\[Sigma]", "\[Alpha]", "\[Beta]"}]]}], "-", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{"\[Mu]", "\[Rho]"}]], " ", 
+      SuperscriptBox["\[Epsilon]", 
+       RowBox[{"\[Nu]", "\[Sigma]", "\[Alpha]", "\[Beta]"}]]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{"\[Nu]", "\[Rho]"}]], " ", 
+      SuperscriptBox["\[Epsilon]", 
+       RowBox[{"\[Mu]", "\[Sigma]", "\[Alpha]", "\[Beta]"}]]}]}], ")"}]}], 
+  TraditionalForm]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Longer Example", "Section"],
+
+Cell["\<\
+test=-(e^4*m*GA[\[Beta]] . GA[\[Sigma]] . GA[\[Nu]] . GA[\[Nu]] . \
+GA[\[Sigma]] . GA[\[Beta]] . GA[7]*Subscript[G, f]^2)/
+  (24*Pi*SP[k1, p1]^2*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2) + 
+ (e^4*m*GA[\[Beta]] . GA[5] . GA[\[Sigma]] . GA[\[Nu]] . GA[\[Nu]] . GA[\
+\[Sigma]] . GA[\[Beta]] . GA[7]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]^2*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2) - 
+ (e^4*GA[\[Beta]] . GA[\[Sigma]] . GA[\[Nu]] . GA[\[Nu]] . GA[\[Sigma]] . GA[\
+\[Beta]] . GA[7] . GS[p2]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]^2*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2) + 
+ (e^4*GA[\[Beta]] . GA[5] . GA[\[Sigma]] . GA[\[Nu]] . GA[\[Nu]] . \
+GA[\[Sigma]] . GA[\[Beta]] . GA[7] . GS[p2]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]^2*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2) + 
+ (e^4*m*GA[\[Beta]] . GA[\[Sigma]] . GA[\[Nu]] . GS[n] . GA[5] . GA[\[Nu]] . \
+GA[\[Sigma]] . GA[\[Beta]] . GA[7]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]^2*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2) - 
+ (e^4*m*GA[\[Beta]] . GA[5] . GA[\[Sigma]] . GA[\[Nu]] . GS[n] . GA[5] . GA[\
+\[Nu]] . GA[\[Sigma]] . GA[\[Beta]] . 
+    GA[7]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]^2*
+   (2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2) + 
+ (e^4*GA[\[Beta]] . GA[\[Sigma]] . GA[\[Nu]] . GS[n] . GA[5] . GA[\[Nu]] . \
+GA[\[Sigma]] . GA[\[Beta]] . GA[7] . 
+    GS[p2]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]^2*
+   (2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2) - 
+ (e^4*GA[\[Beta]] . GA[5] . GA[\[Sigma]] . GA[\[Nu]] . GS[n] . GA[5] . GA[\
+\[Nu]] . GA[\[Sigma]] . GA[\[Beta]] . 
+    GA[7] . GS[p2]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]^2*
+   (2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2) - 
+ (e^4*m*GA[\[Beta]] . GA[\[Nu]] . GA[\[Sigma]] . GA[\[Sigma]] . GA[\[Nu]] . \
+GA[\[Beta]] . GA[7]*Subscript[G, f]^2)/
+  (24*Pi*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, p1]^2) + 
+ (e^4*m*GA[\[Beta]] . GA[5] . GA[\[Nu]] . GA[\[Sigma]] . GA[\[Sigma]] . GA[\
+\[Nu]] . GA[\[Beta]] . GA[7]*
+   Subscript[G, f]^2)/(24*Pi*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, \
+p1])^2*SP[k2, p1]^2) - 
+ (e^4*GA[\[Beta]] . GA[\[Nu]] . GA[\[Sigma]] . GA[\[Sigma]] . GA[\[Nu]] . GA[\
+\[Beta]] . GA[7] . GS[p2]*
+   Subscript[G, f]^2)/(24*Pi*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, \
+p1])^2*SP[k2, p1]^2) + 
+ (e^4*GA[\[Beta]] . GA[5] . GA[\[Nu]] . GA[\[Sigma]] . GA[\[Sigma]] . \
+GA[\[Nu]] . GA[\[Beta]] . GA[7] . GS[p2]*
+   Subscript[G, f]^2)/(24*Pi*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, \
+p1])^2*SP[k2, p1]^2) + 
+ (e^4*m*GA[\[Beta]] . GA[\[Nu]] . GA[\[Sigma]] . GS[n] . GA[5] . GA[\[Sigma]] \
+. GA[\[Nu]] . GA[\[Beta]] . GA[7]*
+   Subscript[G, f]^2)/(24*Pi*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, \
+p1])^2*SP[k2, p1]^2) - 
+ (e^4*m*GA[\[Beta]] . GA[5] . GA[\[Nu]] . GA[\[Sigma]] . GS[n] . GA[5] . GA[\
+\[Sigma]] . GA[\[Nu]] . GA[\[Beta]] . 
+    GA[7]*Subscript[G, f]^2)/(24*Pi*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, \
+p1])^2*
+   SP[k2, p1]^2) + (e^4*GA[\[Beta]] . GA[\[Nu]] . GA[\[Sigma]] . GS[n] . \
+GA[5] . GA[\[Sigma]] . GA[\[Nu]] . 
+    GA[\[Beta]] . GA[7] . GS[p2]*Subscript[G, f]^2)/
+  (24*Pi*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, p1]^2) - 
+ (e^4*GA[\[Beta]] . GA[5] . GA[\[Nu]] . GA[\[Sigma]] . GS[n] . GA[5] . GA[\
+\[Sigma]] . GA[\[Nu]] . GA[\[Beta]] . 
+    GA[7] . GS[p2]*Subscript[G, f]^2)/(24*Pi*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2*
+   SP[k2, p1]^2) - (e^4*m*GA[\[Beta]] . GA[\[Nu]] . GA[\[Sigma]] . GA[\[Nu]] \
+. GA[\[Sigma]] . GA[\[Beta]] . GA[7]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2*
+   SP[k2, p1]) - (e^4*m*GA[\[Beta]] . GA[\[Sigma]] . GA[\[Nu]] . GA[\[Sigma]] \
+. GA[\[Nu]] . GA[\[Beta]] . GA[7]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2*
+   SP[k2, p1]) + (e^4*m*GA[\[Beta]] . GA[5] . GA[\[Nu]] . GA[\[Sigma]] . GA[\
+\[Nu]] . GA[\[Sigma]] . GA[\[Beta]] . 
+    GA[7]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^
+    2*SP[k2, p1]) + (e^4*m*GA[\[Beta]] . GA[5] . GA[\[Sigma]] . GA[\[Nu]] . \
+GA[\[Sigma]] . GA[\[Nu]] . 
+    GA[\[Beta]] . GA[7]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*
+   (2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, p1]) - 
+ (e^4*GA[\[Beta]] . GA[\[Nu]] . GA[\[Sigma]] . GA[\[Nu]] . GA[\[Sigma]] . GA[\
+\[Beta]] . GA[7] . GS[p2]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2*
+   SP[k2, p1]) - (e^4*GA[\[Beta]] . GA[\[Sigma]] . GA[\[Nu]] . GA[\[Sigma]] . \
+GA[\[Nu]] . GA[\[Beta]] . GA[7] . 
+    GS[p2]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] \
+- 2*SP[k2, p1])^
+    2*SP[k2, p1]) + (e^4*GA[\[Beta]] . GA[5] . GA[\[Nu]] . GA[\[Sigma]] . GA[\
+\[Nu]] . GA[\[Sigma]] . GA[\[Beta]] . 
+    GA[7] . GS[p2]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*
+   (2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, p1]) + 
+ (e^4*GA[\[Beta]] . GA[5] . GA[\[Sigma]] . GA[\[Nu]] . GA[\[Sigma]] . \
+GA[\[Nu]] . GA[\[Beta]] . GA[7] . GS[p2]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2*
+   SP[k2, p1]) + (e^4*m*GA[\[Beta]] . GA[\[Nu]] . GA[\[Sigma]] . GS[n] . \
+GA[5] . GA[\[Nu]] . GA[\[Sigma]] . 
+    GA[\[Beta]] . GA[7]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*
+   (2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, p1]) + 
+ (e^4*m*GA[\[Beta]] . GA[\[Sigma]] . GA[\[Nu]] . GS[n] . GA[5] . GA[\[Sigma]] \
+. GA[\[Nu]] . GA[\[Beta]] . GA[7]*
+   Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^2*
+   SP[k2, p1]) - (e^4*m*GA[\[Beta]] . GA[5] . GA[\[Nu]] . GA[\[Sigma]] . \
+GS[n] . GA[5] . GA[\[Nu]] . 
+    GA[\[Sigma]] . GA[\[Beta]] . GA[7]*Subscript[G, f]^2)/
+  (24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, \
+p1]) - 
+ (e^4*m*GA[\[Beta]] . GA[5] . GA[\[Sigma]] . GA[\[Nu]] . GS[n] . GA[5] . GA[\
+\[Sigma]] . GA[\[Nu]] . GA[\[Beta]] . 
+    GA[7]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - \
+2*SP[k2, p1])^
+    2*SP[k2, p1]) + (e^4*GA[\[Beta]] . GA[\[Nu]] . GA[\[Sigma]] . GS[n] . \
+GA[5] . GA[\[Nu]] . GA[\[Sigma]] . 
+    GA[\[Beta]] . GA[7] . GS[p2]*Subscript[G, f]^2)/
+  (24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, \
+p1]) + 
+ (e^4*GA[\[Beta]] . GA[\[Sigma]] . GA[\[Nu]] . GS[n] . GA[5] . GA[\[Sigma]] . \
+GA[\[Nu]] . GA[\[Beta]] . GA[7] . 
+    GS[p2]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] \
+- 2*SP[k2, p1])^
+    2*SP[k2, p1]) - (e^4*GA[\[Beta]] . GA[5] . GA[\[Nu]] . GA[\[Sigma]] . \
+GS[n] . GA[5] . GA[\[Nu]] . 
+    GA[\[Sigma]] . GA[\[Beta]] . GA[7] . GS[p2]*Subscript[G, f]^2)/
+  (24*Pi*SP[k1, p1]*(2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, \
+p1]) - 
+ (e^4*GA[\[Beta]] . GA[5] . GA[\[Sigma]] . GA[\[Nu]] . GS[n] . GA[5] . GA[\
+\[Sigma]] . GA[\[Nu]] . GA[\[Beta]] . 
+    GA[7] . GS[p2]*Subscript[G, f]^2)/(24*Pi*SP[k1, p1]*
+   (2*SP[k1, k2] - 2*SP[k1, p1] - 2*SP[k2, p1])^2*SP[k2, p1]);\
+\>", "Input"],
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"formres", "=", 
+   RowBox[{"Factor", "[", 
+    RowBox[{"FeynCalcFormLink", "[", 
+     RowBox[{"DiracTrace", "[", "test", "]"}], "]"}], "]"}]}], "]"}]], "Input"],
+
+Cell["\<\
+Symbols e,Gsubf,m;
+Vectors k1,k2,n,p1,p2;
+AutoDeclare Index lor;
+Format Mathematica;
+L resFL = \
+(-(e^4*Gsubf^2*m*g_(1,lor1)*g_(1,lor3)*g_(1,lor2)*g_(1,lor2)*g_(1,lor3)*g_(1,\
+lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)^2*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2)+
+(e^4*Gsubf^2*m*g_(1,lor1)*g5_(1)*g_(1,lor3)*g_(1,lor2)*g_(1,lor2)*g_(1,lor3)*\
+g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)^2*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2)-
+(e^4*Gsubf^2*g_(1,lor1)*g_(1,lor3)*g_(1,lor2)*g_(1,lor2)*g_(1,lor3)*g_(1,lor1)\
+*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)^2*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2)+
+(e^4*Gsubf^2*g_(1,lor1)*g5_(1)*g_(1,lor3)*g_(1,lor2)*g_(1,lor2)*g_(1,lor3)*g_(\
+1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)^2*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2)+
+(e^4*Gsubf^2*m*g_(1,lor1)*g_(1,lor3)*g_(1,lor2)*g_(1,n)*g5_(1)*g_(1,lor2)*g_(\
+1,lor3)*g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)^2*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2)-
+(e^4*Gsubf^2*m*g_(1,lor1)*g5_(1)*g_(1,lor3)*g_(1,lor2)*g_(1,n)*g5_(1)*g_(1,\
+lor2)*g_(1,lor3)*g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)^2*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2)+
+(e^4*Gsubf^2*g_(1,lor1)*g_(1,lor3)*g_(1,lor2)*g_(1,n)*g5_(1)*g_(1,lor2)*g_(1,\
+lor3)*g_(1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)^2*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2)-
+(e^4*Gsubf^2*g_(1,lor1)*g5_(1)*g_(1,lor3)*g_(1,lor2)*g_(1,n)*g5_(1)*g_(1,lor2)\
+*g_(1,lor3)*g_(1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)^2*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2)-
+(e^4*Gsubf^2*m*g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor3)*g_(1,lor2)*g_(1,\
+lor1)*(g7_(1)/2))/
+(24*pi_*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)^2)+
+(e^4*Gsubf^2*m*g_(1,lor1)*g5_(1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor3)*g_(1,lor2)*\
+g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)^2)-
+(e^4*Gsubf^2*g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor3)*g_(1,lor2)*g_(1,lor1)\
+*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)^2)+
+(e^4*Gsubf^2*g_(1,lor1)*g5_(1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor3)*g_(1,lor2)*g_(\
+1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)^2)+
+(e^4*Gsubf^2*m*g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,n)*g5_(1)*g_(1,lor3)*g_(\
+1,lor2)*g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)^2)-
+(e^4*Gsubf^2*m*g_(1,lor1)*g5_(1)*g_(1,lor2)*g_(1,lor3)*g_(1,n)*g5_(1)*g_(1,\
+lor3)*g_(1,lor2)*g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)^2)+
+(e^4*Gsubf^2*g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,n)*g5_(1)*g_(1,lor3)*g_(1,\
+lor2)*g_(1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)^2)-
+(e^4*Gsubf^2*g_(1,lor1)*g5_(1)*g_(1,lor2)*g_(1,lor3)*g_(1,n)*g5_(1)*g_(1,lor3)\
+*g_(1,lor2)*g_(1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)^2)-
+(e^4*Gsubf^2*m*g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor2)*g_(1,lor3)*g_(1,\
+lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))-
+(e^4*Gsubf^2*m*g_(1,lor1)*g_(1,lor3)*g_(1,lor2)*g_(1,lor3)*g_(1,lor2)*g_(1,\
+lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))+
+(e^4*Gsubf^2*m*g_(1,lor1)*g5_(1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor2)*g_(1,lor3)*\
+g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))+
+(e^4*Gsubf^2*m*g_(1,lor1)*g5_(1)*g_(1,lor3)*g_(1,lor2)*g_(1,lor3)*g_(1,lor2)*\
+g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))-
+(e^4*Gsubf^2*g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor2)*g_(1,lor3)*g_(1,lor1)\
+*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))-
+(e^4*Gsubf^2*g_(1,lor1)*g_(1,lor3)*g_(1,lor2)*g_(1,lor3)*g_(1,lor2)*g_(1,lor1)\
+*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))+
+(e^4*Gsubf^2*g_(1,lor1)*g5_(1)*g_(1,lor2)*g_(1,lor3)*g_(1,lor2)*g_(1,lor3)*g_(\
+1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))+
+(e^4*Gsubf^2*g_(1,lor1)*g5_(1)*g_(1,lor3)*g_(1,lor2)*g_(1,lor3)*g_(1,lor2)*g_(\
+1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))+
+(e^4*Gsubf^2*m*g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,n)*g5_(1)*g_(1,lor2)*g_(\
+1,lor3)*g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))+
+(e^4*Gsubf^2*m*g_(1,lor1)*g_(1,lor3)*g_(1,lor2)*g_(1,n)*g5_(1)*g_(1,lor3)*g_(\
+1,lor2)*g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))-
+(e^4*Gsubf^2*m*g_(1,lor1)*g5_(1)*g_(1,lor2)*g_(1,lor3)*g_(1,n)*g5_(1)*g_(1,\
+lor2)*g_(1,lor3)*g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))-
+(e^4*Gsubf^2*m*g_(1,lor1)*g5_(1)*g_(1,lor3)*g_(1,lor2)*g_(1,n)*g5_(1)*g_(1,\
+lor3)*g_(1,lor2)*g_(1,lor1)*(g7_(1)/2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))+
+(e^4*Gsubf^2*g_(1,lor1)*g_(1,lor2)*g_(1,lor3)*g_(1,n)*g5_(1)*g_(1,lor2)*g_(1,\
+lor3)*g_(1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))+
+(e^4*Gsubf^2*g_(1,lor1)*g_(1,lor3)*g_(1,lor2)*g_(1,n)*g5_(1)*g_(1,lor3)*g_(1,\
+lor2)*g_(1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))-
+(e^4*Gsubf^2*g_(1,lor1)*g5_(1)*g_(1,lor2)*g_(1,lor3)*g_(1,n)*g5_(1)*g_(1,lor2)\
+*g_(1,lor3)*g_(1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2))-
+(e^4*Gsubf^2*g_(1,lor1)*g5_(1)*g_(1,lor3)*g_(1,lor2)*g_(1,n)*g5_(1)*g_(1,lor3)\
+*g_(1,lor2)*g_(1,lor1)*(g7_(1)/2)*g_(1,p2))/
+(24*pi_*p1(k1)*(2*k2(k1)-2*p1(k1)-2*p1(k2))^2*p1(k2)));
+trace4,1;
+contract 0;
+.sort;
+#call put(\"%E\", resFL)
+#fromexternal\
+\>", "Program",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox["\<\"Piping the script to FORM and running FORM\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Time needed by FORM : \"\>", "\[InvisibleSpace]", "0.`", 
+    "\[InvisibleSpace]", "\<\" seconds. FORM finished. Got the result back to \
+Mathematica as a string.\"\>"}],
+   SequenceForm[
+   "Time needed by FORM : ", 0., 
+    " seconds. FORM finished. Got the result back to Mathematica as a \
+string."],
+   Editable->False], TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox["\<\"Start translation to Mathematica / FeynCalc syntax\"\>", 
+  TraditionalForm]], "Print"],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"Total wall clock time used: \"\>", "\[InvisibleSpace]", 
+    "0.42`", "\[InvisibleSpace]", "\<\" seconds. Translation to Mathematica \
+and FeynCalc finished.\"\>"}],
+   SequenceForm[
+   "Total wall clock time used: ", 0.42, 
+    " seconds. Translation to Mathematica and FeynCalc finished."],
+   Editable->False], TraditionalForm]], "Print"]
+}, Open  ]],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"0.42120079999999998632276287935383152217`5.6450891006631005", ",", 
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["e", "4"], " ", 
+       SubsuperscriptBox["G", "f", "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           RowBox[{
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["k", "1"],
+              $CellContext`k1],
+             TraditionalForm], "\[CenterDot]", 
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["p", "1"],
+              $CellContext`p1],
+             TraditionalForm]}],
+           TraditionalForm], "+", 
+          FormBox[
+           RowBox[{
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["k", "2"],
+              $CellContext`k2],
+             TraditionalForm], "\[CenterDot]", 
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["p", "1"],
+              $CellContext`p1],
+             TraditionalForm]}],
+           TraditionalForm]}], ")"}], "2"], " ", 
+       FormBox[
+        RowBox[{
+         FormBox["n",
+          TraditionalForm], "\[CenterDot]", 
+         FormBox[
+          InterpretationBox[
+           SubscriptBox["p", "2"],
+           $CellContext`p2],
+          TraditionalForm]}],
+        TraditionalForm]}], 
+      RowBox[{"3", " ", "\[Pi]", " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FormBox[
+          RowBox[{
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["k", "1"],
+             $CellContext`k1],
+            TraditionalForm], "\[CenterDot]", 
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["p", "1"],
+             $CellContext`p1],
+            TraditionalForm]}],
+          TraditionalForm], ")"}], "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FormBox[
+            RowBox[{
+             FormBox[
+              InterpretationBox[
+               SubscriptBox["k", "1"],
+               $CellContext`k1],
+              TraditionalForm], "\[CenterDot]", 
+             FormBox[
+              InterpretationBox[
+               SubscriptBox["p", "1"],
+               $CellContext`p1],
+              TraditionalForm]}],
+            TraditionalForm]}], "-", 
+          FormBox[
+           RowBox[{
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["k", "2"],
+              $CellContext`k2],
+             TraditionalForm], "\[CenterDot]", 
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["p", "1"],
+              $CellContext`p1],
+             TraditionalForm]}],
+           TraditionalForm], "+", 
+          FormBox[
+           RowBox[{
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["k", "1"],
+              $CellContext`k1],
+             TraditionalForm], "\[CenterDot]", 
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["k", "2"],
+              $CellContext`k2],
+             TraditionalForm]}],
+           TraditionalForm]}], ")"}], "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FormBox[
+          RowBox[{
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["k", "2"],
+             $CellContext`k2],
+            TraditionalForm], "\[CenterDot]", 
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["p", "1"],
+             $CellContext`p1],
+            TraditionalForm]}],
+          TraditionalForm], ")"}], "2"]}]]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ LineColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FrontFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ BackFaceColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ GraphicsColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.],
+ FontFamily->"Courier",
+ FontColor->RGBColor[0.44444444444444453`, 0.22222222222222227`, 0.]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"Factor2", "[", 
+    RowBox[{"FCE", "[", 
+     RowBox[{"TR", "[", "test", "]"}], "]"}], "]"}], " ", "===", " ", 
+   "formres"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+   "1.15440209999999998657926880696322768927`6.082957021401082", ",", 
+    "True"}], "}"}], TraditionalForm]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "SetSF"}]], "Input"],
+
+Cell[BoxData[
+ StyleBox["\<\"SetSF set the default Format output type to StandardForm.\"\>",
+   "MSG"]], "Print", "PrintUsage",
+ CellTags->"Info3564524287-6692670"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"SetSF", ";"}]], "Input"]
+}, Open  ]]
+},
+WindowSize->{1645, 802},
+WindowMargins->{{117, Automatic}, {Automatic, 64}},
+ShowSelection->True,
+Magnification:>FEPrivate`If[
+  FEPrivate`Equal[FEPrivate`$VersionNumber, 6.], 1.5, 1.5 Inherited],
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3564524285-6692670"->{
+  Cell[15573, 473, 300, 5, 122, "Print",
+   CellTags->"Info3564524285-6692670"]},
+ "Info3564524287-6692670"->{
+  Cell[37128, 1020, 164, 3, 63, "Print",
+   CellTags->"Info3564524287-6692670"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3564524285-6692670", 37802, 1043},
+ {"Info3564524287-6692670", 37913, 1046}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 82, 1, 45, "Input"],
+Cell[CellGroupData[{
+Cell[664, 25, 100, 1, 117, "Section"],
+Cell[767, 28, 106, 2, 45, "Input"],
+Cell[876, 32, 569, 16, 198, "Program"],
+Cell[CellGroupData[{
+Cell[1470, 52, 107, 2, 32, "Print"],
+Cell[1580, 56, 414, 10, 32, "Print"],
+Cell[1997, 68, 115, 2, 32, "Print"],
+Cell[2115, 72, 402, 9, 32, "Print"]
+}, Open  ]],
+Cell[2532, 84, 443, 7, 44, "Output"],
+Cell[2978, 93, 106, 2, 45, "Input"],
+Cell[3087, 97, 571, 16, 198, "Program"],
+Cell[CellGroupData[{
+Cell[3683, 117, 107, 2, 32, "Print"],
+Cell[3793, 121, 414, 10, 32, "Print"],
+Cell[4210, 133, 115, 2, 32, "Print"],
+Cell[4328, 137, 402, 9, 32, "Print"]
+}, Open  ]],
+Cell[4745, 149, 443, 7, 44, "Output"],
+Cell[5191, 158, 106, 2, 45, "Input"],
+Cell[5300, 162, 581, 17, 220, "Program"],
+Cell[CellGroupData[{
+Cell[5906, 183, 107, 2, 32, "Print"],
+Cell[6016, 187, 414, 10, 32, "Print"],
+Cell[6433, 199, 115, 2, 32, "Print"],
+Cell[6551, 203, 402, 9, 32, "Print"]
+}, Open  ]],
+Cell[6968, 215, 466, 8, 44, "Output"],
+Cell[7437, 225, 318, 9, 45, "Input"],
+Cell[7758, 236, 626, 18, 241, "Program"],
+Cell[CellGroupData[{
+Cell[8409, 258, 107, 2, 32, "Print"],
+Cell[8519, 262, 414, 10, 32, "Print"],
+Cell[8936, 274, 115, 2, 32, "Print"],
+Cell[9054, 278, 402, 9, 32, "Print"]
+}, Open  ]],
+Cell[9471, 290, 677, 17, 44, "Output"],
+Cell[10151, 309, 676, 21, 45, "Input"],
+Cell[10830, 332, 626, 18, 241, "Program"],
+Cell[CellGroupData[{
+Cell[11481, 354, 107, 2, 32, "Print"],
+Cell[11591, 358, 414, 10, 32, "Print"],
+Cell[12008, 370, 115, 2, 32, "Print"],
+Cell[12126, 374, 402, 9, 32, "Print"]
+}, Open  ]],
+Cell[12543, 386, 446, 7, 44, "Output"],
+Cell[12992, 395, 216, 5, 45, "Input"],
+Cell[13211, 402, 636, 17, 220, "Program"],
+Cell[CellGroupData[{
+Cell[13872, 423, 107, 2, 32, "Print"],
+Cell[13982, 427, 414, 10, 32, "Print"],
+Cell[14399, 439, 115, 2, 32, "Print"],
+Cell[14517, 443, 402, 9, 32, "Print"]
+}, Open  ]],
+Cell[14934, 455, 553, 11, 44, "Output"],
+Cell[CellGroupData[{
+Cell[15512, 470, 58, 1, 45, "Input"],
+Cell[15573, 473, 300, 5, 122, "Print",
+ CellTags->"Info3564524285-6692670"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15910, 483, 41, 0, 45, "Input"],
+Cell[15954, 485, 86, 2, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16077, 492, 162, 4, 45, "Input"],
+Cell[16242, 498, 475, 20, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16754, 523, 357, 9, 45, "Input"],
+Cell[17114, 534, 1251, 35, 50, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18414, 575, 33, 0, 117, "Section"],
+Cell[18450, 577, 6936, 130, 1858, "Input"],
+Cell[25389, 709, 218, 5, 45, "Input"],
+Cell[25610, 716, 5845, 115, 1617, "Program"],
+Cell[CellGroupData[{
+Cell[31480, 835, 107, 2, 32, "Print"],
+Cell[31590, 839, 414, 10, 32, "Print"],
+Cell[32007, 851, 115, 2, 32, "Print"],
+Cell[32125, 855, 402, 9, 32, "Print"]
+}, Open  ]],
+Cell[32542, 867, 4084, 128, 74, "Output"],
+Cell[CellGroupData[{
+Cell[36651, 999, 214, 6, 45, "Input"],
+Cell[36868, 1007, 172, 5, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37077, 1017, 48, 1, 45, "Input"],
+Cell[37128, 1020, 164, 3, 63, "Print",
+ CellTags->"Info3564524287-6692670"]
+}, Open  ]],
+Cell[37307, 1026, 48, 1, 45, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
