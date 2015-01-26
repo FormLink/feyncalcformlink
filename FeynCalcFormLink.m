@@ -92,8 +92,17 @@ SetTF := If[$FrontEnd =!=Null,
 
 
 If[ !ValueQ[FCI],
-    MakeContext[Dimension, FCI, FCE, FreeQ2, MomentumExpand, DiracGammaExpand, ScalarProductExpand,
-    LorentzIndex, Momentum, NonCommFreeQ, Eps, Pair, DiracGamma, DiracTrace, MTD, SUNSimplify, SUNT, TR, DotSimplify]
+    LorentzIndex:= LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
+    Momentum:= Momentum = MakeContext["CoreObjects","Momentum"];
+    Eps:= Eps = MakeContext["CoreObjects","Eps"];
+    Pair:= Pair = MakeContext["CoreObjects","Pair"];
+    DiracGamma:= DiracGamma = MakeContext["CoreObjects","DiracGamma"];
+    MTD:= MTD = MakeContext["CoreObjects","MTD"];
+    SUNT:= SUNT = MakeContext["CoreObjects","SUNT"];
+    Dimension:= Dimension = MakeContext["Dimension","Dimension"];
+
+    MakeContext[FCI, FCE, FreeQ2, MomentumExpand, DiracGammaExpand, ScalarProductExpand,
+    NonCommFreeQ, DiracTrace, SUNSimplify, TR, DotSimplify]
 ];
 
 (* this if missing in some FeynCalc versions *)
