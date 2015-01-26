@@ -25,17 +25,17 @@ If[ {FindFile["FeynCalc`"], FindFile["HighEnergyPhysics`FeynCalc`"] }=== {$Faile
 ];
 
 (* This can be set in Config.m *)
- 
 
-$UseFormEpsConvention::usage = "$UseFormEpsConvention is set to True by default and sets FeynCalc $LeviCivitaSign=-I , i.e., the 
-same convention for traces involving Gamma[5] as in FORM, when FeynCalcFormLink is loaded. $UseFormEpsConvention should be set 
+
+$UseFormEpsConvention::usage = "$UseFormEpsConvention is set to True by default and sets FeynCalc $LeviCivitaSign=-I , i.e., the
+same convention for traces involving Gamma[5] as in FORM, when FeynCalcFormLink is loaded. $UseFormEpsConvention should be set
 in the Config.m file only.";
 
-Functions::usage = "Functions is an option to FeynCalcFormLink. If set to \"CFunctions\", then all non-System` functions, 
-except those present in $M2Form and some FeynCalc functions, are automatically declared CFunctions in FORM. 
+Functions::usage = "Functions is an option to FeynCalcFormLink. If set to \"CFunctions\", then all non-System` functions,
+except those present in $M2Form and some FeynCalc functions, are automatically declared CFunctions in FORM.
 If Functions is set to \"Functions\", then they declare noncommutative functions \"Functions\" in FORM.";
 
-ExtraDeclare::usage = "ExtraDeclare is an option to FeynCalcFormLink, a list 
+ExtraDeclare::usage = "ExtraDeclare is an option to FeynCalcFormLink, a list
 containing extra decalaration which will be sent to FORM."
 
 FC2Form::usage = "FC2Form[expr] translates expr to FORM.";
@@ -79,15 +79,15 @@ If[ FeynCalcFormLink`$UseFormEpsConvention === True,
 $thiscontext = Context[];
 
 SetSF :=
-    (SetOptions[#, "CommonDefaultFormatTypes" -> {"Input" -> StandardForm, 
-    "InputInline" -> StandardForm, "Output" -> StandardForm, 
-    "OutputInline" -> StandardForm, "Text" -> TextForm, 
+    (SetOptions[#, "CommonDefaultFormatTypes" -> {"Input" -> StandardForm,
+    "InputInline" -> StandardForm, "Output" -> StandardForm,
+    "OutputInline" -> StandardForm, "Text" -> TextForm,
     "TextInline" -> TraditionalForm}] & /@ {$FrontEnd, $FrontEndSession});
-      
-SetTF := If[$FrontEnd =!=Null, 
-    SetOptions[$FrontEndSession, "CommonDefaultFormatTypes" -> {"Input" -> StandardForm, 
-    "InputInline" -> StandardForm, "Output" -> TraditionalForm, 
-    "OutputInline" -> StandardForm, "Text" -> TextForm, 
+
+SetTF := If[$FrontEnd =!=Null,
+    SetOptions[$FrontEndSession, "CommonDefaultFormatTypes" -> {"Input" -> StandardForm,
+    "InputInline" -> StandardForm, "Output" -> TraditionalForm,
+    "OutputInline" -> StandardForm, "Text" -> TextForm,
     "TextInline" -> TraditionalForm}]];
 
 
@@ -98,7 +98,7 @@ If[ !ValueQ[FCI],
 
 (* this if missing in some FeynCalc versions *)
  HighEnergyPhysics`FeynCalc`fctools`FeynCalcExternal`Private`eps = Eps;
- 
+
  (* FeynCalc 8 has this PageWidth -> 137 for ToString. However, in Mathematica 9 this gives slight trouble *)
  SetOptions[ToString, PageWidth -> Infinity];
 
@@ -109,17 +109,17 @@ asciicheck[w_Symbol] :=
     asciicheck[w] = Max[ToCharacterCode[ToString[w]]]<128;
 
 Options[FC2Form] = {Functions -> "CFunctions",
-                    Dimension -> Automatic, 
-                    ExtraDeclare->{}, 
-                    IDStatements -> {}, 
+                    Dimension -> Automatic,
+                    ExtraDeclare->{},
+                    IDStatements -> {},
 (*                   Multiply -> 1,*)
                     Print -> True,
                     Replace->{}
                    };
 
 FC2Form[exp_,OptionsPattern[]] :=
-    Module[ {script = {},VF,fci,f2mrules,lor,mom,tmp,Rlo,Rmo,iRlo,iRmo,in = 0,imax = 0, formmom, formvecs, formlor, forminds, symbols, dim, allDlors, extravars, idstatements,  subscripts, 
-            extrasubsubst, extrasubstback, print, revrules, flo, dirmomto4, time, addgammaid, 
+    Module[ {script = {},VF,fci,f2mrules,lor,mom,tmp,Rlo,Rmo,iRlo,iRmo,in = 0,imax = 0, formmom, formvecs, formlor, forminds, symbols, dim, allDlors, extravars, idstatements,  subscripts,
+            extrasubsubst, extrasubstback, print, revrules, flo, dirmomto4, time, addgammaid,
             sym, Rsy, iRsy, formlors, specheads, cfuns(*, mult*)},
         dim = OptionValue[Dimension];
         f2mrules = {(*$thiscontext -> "", *)
@@ -149,7 +149,7 @@ FC2Form[exp_,OptionsPattern[]] :=
         ];
         fci = exp // FCI // SUNSimplify // MomentumExpand // DiracGammaExpand // ScalarProductExpand;
         If[Global`$FLDebug,
-           print["simple FeynCalc preparation done"]; 
+           print["simple FeynCalc preparation done"];
         ];
 
         (* there can be Subscript[]'s *)
@@ -161,7 +161,7 @@ FC2Form[exp_,OptionsPattern[]] :=
         gamma67opt = {(1-DiracGamma[5]) :> (2 DiracGamma[7]), (1+DiracGamma[5]) :> (2 DiracGamma[6])};
         fci = fci /. gamma67opt;
         *)
-        idstatements = StringTrim /@ Flatten[OptionValue[IDStatements]/. s_String:> 
+        idstatements = StringTrim /@ Flatten[OptionValue[IDStatements]/. s_String:>
                        StringTrim[StringReplace[s, {"\n"->"", "\[IndentingNewLine]"->"","\t"->""}]] /. s_String :> (#<>";"&/@StringSplit[s, ";"])];
         (* If[idstatements =!= {}, print["idstatements = ", idstatements//InputForm] ]; *)
         (* get extra variables from the right hand sides of id statements *)
@@ -199,7 +199,7 @@ FC2Form[exp_,OptionsPattern[]] :=
         symbols = Complement[Select[Select[Cases[fci, _Symbol, -1], (Context[Evaluate[#]]=!="System`")&], asciicheck], formvecs, forminds];
         (* this is the list of symbols which will not get replaced by sym's, e.g., greek symbols *)
         If[ StringQ[OptionValue[Functions]],
-            sym = Complement[Select[Select[Cases[fci, _Symbol, -1], (Context[Evaluate[#]]=!="System`")&], Function[x, Not[asciicheck[x]]]], 
+            sym = Complement[Select[Select[Cases[fci, _Symbol, -1], (Context[Evaluate[#]]=!="System`")&], Function[x, Not[asciicheck[x]]]],
                                     formvecs, forminds, formlors];
             Rsy = Thread[ sym -> Array[Symbol["sym" <> ToString[#]] &, Length@sym]];
             iRsy = Reverse /@ Rsy;,
@@ -212,18 +212,18 @@ FC2Form[exp_,OptionsPattern[]] :=
         specheads = Join[{LorentzIndex, Momentum, Eps, DiracTrace, DiracGamma, Pair}, $M2Form[[All,1]]];
         cfuns = Head /@ Cases[{(*mult,*)fci}, (h_Symbol /; (!MemberQ[specheads,h] && Context[h] =!= "System`"))[args__], -1];
         cfuns = Union[cfuns];
-        extravars = 
-         Cases[ToExpression /@ 
+        extravars =
+         Cases[ToExpression /@
            Select[
-             Select[idstatements, StringMatchQ[#, "id*=*;"] &] /. 
-              s_String :> StringReplace[StringSplit[s, "="][[2]], ";" -> ""], 
+             Select[idstatements, StringMatchQ[#, "id*=*;"] &] /.
+              s_String :> StringReplace[StringSplit[s, "="][[2]], ";" -> ""],
             SyntaxQ], _Symbol, -1];
         symbols = Union[symbols,extravars,Rsy[[All,2]]];
         If[ dim =!= 4,
             PrependTo[symbols,dim]
         ];
         If[Global`$FLDebug,
-           print["symbols = ", symbols]; 
+           print["symbols = ", symbols];
         ];
         Rlo = Thread[ lor -> Array[Symbol["lor" <> ToString[#]] &, Length@lor]];
         iRlo = Reverse /@ Rlo;
@@ -245,20 +245,20 @@ FC2Form[exp_,OptionsPattern[]] :=
         tmp = tmp /. DiracGamma[z_,___] :> g$[z]/. Join[Rlo, Rmo, Rsy] /. {Momentum[a_Symbol,___] :> a, LorentzIndex[m_Symbol,___] :>m};
         tmp = Expand[tmp,_DiracTrace];
         tmp = Distribute[VF[tmp]];
-        
+
         time = AbsoluteTime[];
         If[Global`$FLDebug,
            Global`TMPP = tmp];
-        
+
         addgammaid[z_] :=
             Block[ {zplus,holdplus,plussubli},
                 zplus = Select[
                    Cases[z, _Plus, -1] // Union, !FreeQ2[#, {_g$, _g5$,_g6$,_g7$}] &] /. {a__} :> (holdplus @@@ {a});
                 If[ zplus === {},
                     z,
-                    plussubli = 
-                     Thread[zplus -> (zplus /. 
-                          holdplus[a___, b_ /; FreeQ2[b, {_g$, _gi$, _g5$, _g6$, _g7$}], c___] :> 
+                    plussubli =
+                     Thread[zplus -> (zplus /.
+                          holdplus[a___, b_ /; FreeQ2[b, {_g$, _gi$, _g5$, _g6$, _g7$}], c___] :>
                            holdplus[a, b*gi$[], c])] /. Plus -> holdplus;
                     z /. Plus -> holdplus //. plussubli /. holdplus -> Plus
                 ]
@@ -267,22 +267,22 @@ FC2Form[exp_,OptionsPattern[]] :=
 
         (* *)
         tmp = tmp /. DiracTrace[a__]^2 :> DiracTrace[a]**DiracTrace[a];
-If[Global`$FLDebug, Global`TMPT1=tmp];        
+If[Global`$FLDebug, Global`TMPT1=tmp];
         tmp = tmp /. VF[vf_]:>(in = 0;
-                               vf/. DiracTrace->Hold[DiracTrace] /. 
+                               vf/. DiracTrace->Hold[DiracTrace] /.
                                Hold[DiracTrace][y_ /; FreeQ2[y,{_g$,_g5$,_g6$,_g7$,_gi$}]] :> ( in++;
                                                                                                 If[ imax<in,
                                                                                                     imax = in
                                                                                                 ];
                                                                                                 (y * gi$[in])
-                                                                                               ) /. 
+                                                                                               ) /.
                                Hold[DiracTrace][x_]:>(in++;
                                                       If[ imax<in,
                                                           imax = in
                                                       ];
                                                       x/.(gx:(gi$|g$|g5$|g6$|g7$))[y___]:>gx[in,y]));
-If[Global`$FLDebug, Global`TMPT2=tmp];        
-                                                      
+If[Global`$FLDebug, Global`TMPT2=tmp];
+
         tmp = tmp /. Dot->NonCommutativeMultiply;
         tmp = tmp/.OptionValue[Replace];
         tmp = ToString[tmp,InputForm, PageWidth -> FormLink`$FormPageWidth];
@@ -379,30 +379,30 @@ Form2FC[exp_String, ReplaceBack:(_Rule|{___Rule}), OptionsPattern[] ] :=
     ];
 
 Options[FeynCalcFormLink] = {
-                             Functions -> "CFunctions", FCE->True, 
-                             FormSetup :> $FormSetup, 
+                             Functions -> "CFunctions", FCE->True,
+                             FormSetup :> $FormSetup,
                              Form2FC -> Form2FC,
-                             ExtraDeclare -> {}, 
-                             IDStatements -> {}, 
-                             Print -> True, 
-                             Replace -> {}, 
+                             ExtraDeclare -> {},
+                             IDStatements -> {},
+                             Print -> True,
+                             Replace -> {},
                              Style -> {Darker@Darker@N[Orange], FontFamily -> "Courier" }};
 FeynCalcFormLink[exprin_, opts : OptionsPattern[]] :=
-    Module[ {expr, (*fac = 1,*) fm1, fm2, frres, print, formtimestart, 
+    Module[ {expr, (*fac = 1,*) fm1, fm2, frres, print, formtimestart,
     res, totaltimestart, cprint},
         cprint = Function[p, If[ p === False, Hold, p /. True -> CellPrint ]]@OptionValue[Print];
         totaltimestart = AbsoluteTime[];
         Catch[
-            
-        expr = FCI[exprin] /. DiracTrace[bla_ /; FreeQ2[bla,{DiracGamma, SUNT}] ] :> (bla DiracTrace[1]);    
+
+        expr = FCI[exprin] /. DiracTrace[bla_ /; FreeQ2[bla,{DiracGamma, SUNT}] ] :> (bla DiracTrace[1]);
     (*
     somehow this whole factoring out and multiplying back is not easy to do. TODO: fix this sometime later
     If[(!FreeQ[expr, DiracTrace] ) &&  (!FreeQ[expr, DiracGamma]) &&
         (Head[expr] === Times), fac = Select[expr, FreeQ2[#,{ DiracGamma, LorentzIndex }]&] /. DiracTrace -> TR ; expr = expr/fac, fac = 1];
     *)
-        {fm1, fm2} = 
-         FC2Form[expr, IDStatements -> OptionValue[IDStatements], 
-             Replace -> OptionValue[Replace], 
+        {fm1, fm2} =
+         FC2Form[expr, IDStatements -> OptionValue[IDStatements],
+             Replace -> OptionValue[Replace],
         (*       Multiply -> fac,*) (* that seems not to be right ... *)
              Functions -> OptionValue[Functions],
           ExtraDeclare -> OptionValue[ExtraDeclare]];
@@ -411,19 +411,19 @@ FeynCalcFormLink[exprin_, opts : OptionsPattern[]] :=
             print = Print,
             print = Hold
         ];
-        If[ Global`$FLDebug, 
+        If[ Global`$FLDebug,
         	print["DEBUGF1 = ",fm1];
         	print["DEBUGF2 = ",fm2];
         	Global`DEBUGF1 = fm1;    Global`DEBUGF2 = fm2; ];
         (*
-        If[fac =!= 1, 
+        If[fac =!= 1,
             print["The Form program generated by FC2Form is, up to the global factor  ", fac//TraditionalForm," : "],
             print["The Form program generated by FC2Form is: "];
         ];
         *)
-        
+
         (* CellPrint here enables easy copy and paste in the FrontEnd ... *)
-            
+
         If[$FrontEnd =!= Null,
         cprint@Cell[TextData[ExportString[fm1, "Text"]], FormLink`$FormOutputCellStyle, OptionValue[Style]],
         print@ExportString[fm1, "Text"]
@@ -456,7 +456,7 @@ FeynCalcFormLink[exprin_, opts : OptionsPattern[]] :=
         res
 ]
     ];
-  
+
 (* Think about this for the next FeynCalc version, but for now :*)
 SetTF;
 
