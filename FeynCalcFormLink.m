@@ -12,17 +12,12 @@ If[ Global`$FeynCalcStartupMessages === False,
 
 (* so FeynCalcFormLink loads FormLink and FeynCalc: *)
 
-If[ FindFile["FeynCalc`"] =!= $Failed, (* for FC 9 *)
-    Quiet @ BeginPackage["FeynCalcFormLink`", {"FormLink`", "FeynCalc`"}]
-];
-If[FindFile["HighEnergyPhysics`FeynCalc`"] =!= $Failed,
-   Quiet @ BeginPackage["FeynCalcFormLink`", {"FormLink`", "HighEnergyPhysics`FeynCalc`"}]
-];
-
 If[ {FindFile["FeynCalc`"], FindFile["HighEnergyPhysics`FeynCalc`"] }=== {$Failed,$Failed},
     Print["FeynCalc  not found, please install FeynCalc first ! Exiting now "] ;
     Pause[1]; Quit[]
 ];
+
+BeginPackage["FeynCalcFormLink`", {"FormLink`", "HighEnergyPhysics`FeynCalc`"}]
 
 (* This can be set in Config.m *)
 
