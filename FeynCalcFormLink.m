@@ -12,12 +12,12 @@ If[ Global`$FeynCalcStartupMessages === False,
 
 (* so FeynCalcFormLink loads FormLink and FeynCalc: *)
 
-If[ {FindFile["FeynCalc`"], FindFile["HighEnergyPhysics`FeynCalc`"] }=== {$Failed,$Failed},
-    Print["FeynCalc  not found, please install FeynCalc first ! Exiting now "] ;
-    Pause[1]; Quit[]
+If[ {FindFile["FeynCalc`"], FindFile["FeynCalc`"] }=== {$Failed,$Failed},
+	Print["FeynCalc  not found, please install FeynCalc first ! Exiting now "] ;
+	Pause[1]; Quit[]
 ];
 
-BeginPackage["FeynCalcFormLink`", {"FormLink`", "HighEnergyPhysics`FeynCalc`"}]
+BeginPackage["FeynCalcFormLink`", {"FormLink`", "FeynCalc`"}]
 
 (* This can be set in Config.m *)
 
@@ -84,21 +84,6 @@ SetTF := If[$FrontEnd =!=Null,
     "InputInline" -> StandardForm, "Output" -> TraditionalForm,
     "OutputInline" -> StandardForm, "Text" -> TextForm,
     "TextInline" -> TraditionalForm}]];
-
-
-If[ !ValueQ[FCI],
-    LorentzIndex:= LorentzIndex = MakeContext["CoreObjects","LorentzIndex"];
-    Momentum:= Momentum = MakeContext["CoreObjects","Momentum"];
-    Eps:= Eps = MakeContext["CoreObjects","Eps"];
-    Pair:= Pair = MakeContext["CoreObjects","Pair"];
-    DiracGamma:= DiracGamma = MakeContext["CoreObjects","DiracGamma"];
-    MTD:= MTD = MakeContext["CoreObjects","MTD"];
-    SUNT:= SUNT = MakeContext["CoreObjects","SUNT"];
-    Dimension:= Dimension = MakeContext["Dimension","Dimension"];
-
-    MakeContext[FCI, FCE, FreeQ2, MomentumExpand, DiracGammaExpand, ScalarProductExpand,
-    NonCommFreeQ, DiracTrace, SUNSimplify, TR, DotSimplify]
-];
 
 (* this if missing in some FeynCalc versions *)
  HighEnergyPhysics`FeynCalc`fctools`FeynCalcExternal`Private`eps = Eps;
