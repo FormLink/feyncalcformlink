@@ -10,27 +10,23 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    101578,       3268]
-NotebookOptionsPosition[     97920,       3143]
-NotebookOutlinePosition[     98317,       3160]
-CellTagsIndexPosition[     98274,       3157]
+NotebookDataLength[    101755,       3267]
+NotebookOptionsPosition[     98099,       3142]
+NotebookOutlinePosition[     98488,       3159]
+CellTagsIndexPosition[     98445,       3156]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["\<\
-Double Bremsstrahlung in \[Tau] leptonic radiative decay \
-\>", "Title"],
+Cell["Double Bremsstrahlung in \[Tau] leptonic radiative decay ", "Title"],
 
 Cell["\<\
 This notebook is based on work by Matteo Fael (fael@pd.infn.it). \
 \>", "Text"],
 
-Cell["\<\
-This loads FeynCalcFormLink, FormLink  and FeynCalc \
-\>", "Text",
+Cell["This loads FeynCalcFormLink, FormLink  and FeynCalc ", "Text",
  CellChangeTimes->{{3.5641538823106847`*^9, 3.564153889703108*^9}}],
 
 Cell[BoxData[
@@ -1307,69 +1303,86 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  FractionBox[
-   RowBox[{
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{"3", " ", "\[Pi]"}]], 
+   RowBox[{"(", 
     RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", 
+         SuperscriptBox[
+          FormBox[
+           InterpretationBox[
+            SubscriptBox["k", "1"],
+            $CellContext`k1],
+           TraditionalForm], "\[Alpha]"]}], "-", 
         SuperscriptBox[
          FormBox[
           InterpretationBox[
-           SubscriptBox["k", "1"],
-           $CellContext`k1],
-          TraditionalForm], "\[Alpha]"]}], "-", 
-       SuperscriptBox[
-        FormBox[
-         InterpretationBox[
-          SubscriptBox["k", "2"],
-          $CellContext`k2],
-         TraditionalForm], "\[Alpha]"], "+", 
-       SuperscriptBox[
-        FormBox[
-         InterpretationBox[
-          SubscriptBox["p", "1"],
-          $CellContext`p1],
-         TraditionalForm], "\[Alpha]"], "-", 
-       SuperscriptBox[
-        FormBox[
-         InterpretationBox[
-          SubscriptBox["p", "2"],
-          $CellContext`p2],
-         TraditionalForm], "\[Alpha]"]}], ")"}], " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"-", 
+           SubscriptBox["k", "2"],
+           $CellContext`k2],
+          TraditionalForm], "\[Alpha]"], "+", 
         SuperscriptBox[
          FormBox[
           InterpretationBox[
-           SubscriptBox["k", "1"],
-           $CellContext`k1],
-          TraditionalForm], "\[Beta]"]}], "-", 
-       SuperscriptBox[
-        FormBox[
-         InterpretationBox[
-          SubscriptBox["k", "2"],
-          $CellContext`k2],
-         TraditionalForm], "\[Beta]"], "+", 
-       SuperscriptBox[
-        FormBox[
-         InterpretationBox[
-          SubscriptBox["p", "1"],
-          $CellContext`p1],
-         TraditionalForm], "\[Beta]"], "-", 
-       SuperscriptBox[
-        FormBox[
-         InterpretationBox[
-          SubscriptBox["p", "2"],
-          $CellContext`p2],
-         TraditionalForm], "\[Beta]"]}], ")"}]}], "-", 
-    RowBox[{
-     SuperscriptBox["g", 
-      RowBox[{"\[Alpha]", "\[Beta]"}]], " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"-", 
+           SubscriptBox["p", "1"],
+           $CellContext`p1],
+          TraditionalForm], "\[Alpha]"], "-", 
+        SuperscriptBox[
+         FormBox[
+          InterpretationBox[
+           SubscriptBox["p", "2"],
+           $CellContext`p2],
+          TraditionalForm], "\[Alpha]"]}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", 
+         SuperscriptBox[
+          FormBox[
+           InterpretationBox[
+            SubscriptBox["k", "1"],
+            $CellContext`k1],
+           TraditionalForm], "\[Beta]"]}], "-", 
+        SuperscriptBox[
+         FormBox[
+          InterpretationBox[
+           SubscriptBox["k", "2"],
+           $CellContext`k2],
+          TraditionalForm], "\[Beta]"], "+", 
+        SuperscriptBox[
+         FormBox[
+          InterpretationBox[
+           SubscriptBox["p", "1"],
+           $CellContext`p1],
+          TraditionalForm], "\[Beta]"], "-", 
+        SuperscriptBox[
+         FormBox[
+          InterpretationBox[
+           SubscriptBox["p", "2"],
+           $CellContext`p2],
+          TraditionalForm], "\[Beta]"]}], ")"}]}], "-", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{"\[Alpha]", "\[Beta]"}]], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"2", " ", 
+          FormBox[
+           RowBox[{
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["k", "1"],
+              $CellContext`k1],
+             TraditionalForm], "\[CenterDot]", 
+            FormBox[
+             InterpretationBox[
+              SubscriptBox["p", "1"],
+              $CellContext`p1],
+             TraditionalForm]}],
+           TraditionalForm]}]}], "+", 
         RowBox[{"2", " ", 
          FormBox[
           RowBox[{
@@ -1380,83 +1393,69 @@ Cell[BoxData[
             TraditionalForm], "\[CenterDot]", 
            FormBox[
             InterpretationBox[
+             SubscriptBox["p", "2"],
+             $CellContext`p2],
+            TraditionalForm]}],
+          TraditionalForm]}], "-", 
+        RowBox[{"2", " ", 
+         FormBox[
+          RowBox[{
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["k", "2"],
+             $CellContext`k2],
+            TraditionalForm], "\[CenterDot]", 
+           FormBox[
+            InterpretationBox[
              SubscriptBox["p", "1"],
              $CellContext`p1],
             TraditionalForm]}],
-          TraditionalForm]}]}], "+", 
-       RowBox[{"2", " ", 
-        FormBox[
-         RowBox[{
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["k", "1"],
-            $CellContext`k1],
-           TraditionalForm], "\[CenterDot]", 
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["p", "2"],
-            $CellContext`p2],
-           TraditionalForm]}],
-         TraditionalForm]}], "-", 
-       RowBox[{"2", " ", 
-        FormBox[
-         RowBox[{
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["k", "2"],
-            $CellContext`k2],
-           TraditionalForm], "\[CenterDot]", 
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["p", "1"],
-            $CellContext`p1],
-           TraditionalForm]}],
-         TraditionalForm]}], "+", 
-       RowBox[{"2", " ", 
-        FormBox[
-         RowBox[{
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["k", "2"],
-            $CellContext`k2],
-           TraditionalForm], "\[CenterDot]", 
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["p", "2"],
-            $CellContext`p2],
-           TraditionalForm]}],
-         TraditionalForm]}], "+", 
-       RowBox[{"2", " ", 
-        FormBox[
-         RowBox[{
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["k", "1"],
-            $CellContext`k1],
-           TraditionalForm], "\[CenterDot]", 
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["k", "2"],
-            $CellContext`k2],
-           TraditionalForm]}],
-         TraditionalForm]}], "+", 
-       SuperscriptBox["m", "2"], "+", 
-       SuperscriptBox["M", "2"], "-", 
-       RowBox[{"2", " ", 
-        FormBox[
-         RowBox[{
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["p", "1"],
-            $CellContext`p1],
-           TraditionalForm], "\[CenterDot]", 
-          FormBox[
-           InterpretationBox[
-            SubscriptBox["p", "2"],
-            $CellContext`p2],
-           TraditionalForm]}],
-         TraditionalForm]}]}], ")"}]}]}], 
-   RowBox[{"3", " ", "\[Pi]"}]], TraditionalForm]], "Output"]
+          TraditionalForm]}], "+", 
+        RowBox[{"2", " ", 
+         FormBox[
+          RowBox[{
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["k", "2"],
+             $CellContext`k2],
+            TraditionalForm], "\[CenterDot]", 
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["p", "2"],
+             $CellContext`p2],
+            TraditionalForm]}],
+          TraditionalForm]}], "+", 
+        RowBox[{"2", " ", 
+         FormBox[
+          RowBox[{
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["k", "1"],
+             $CellContext`k1],
+            TraditionalForm], "\[CenterDot]", 
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["k", "2"],
+             $CellContext`k2],
+            TraditionalForm]}],
+          TraditionalForm]}], "+", 
+        SuperscriptBox["m", "2"], "+", 
+        SuperscriptBox["M", "2"], "-", 
+        RowBox[{"2", " ", 
+         FormBox[
+          RowBox[{
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["p", "1"],
+             $CellContext`p1],
+            TraditionalForm], "\[CenterDot]", 
+           FormBox[
+            InterpretationBox[
+             SubscriptBox["p", "2"],
+             $CellContext`p2],
+            TraditionalForm]}],
+          TraditionalForm]}]}], ")"}]}]}], ")"}]}], 
+  TraditionalForm]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3141,11 +3140,11 @@ So the results of FORM and FeynCalc agree, but FormLink is much faster.\
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1000, 834},
-WindowMargins->{{325, Automatic}, {55, Automatic}},
+WindowSize->{1000, 714},
+WindowMargins->{{Automatic, -9}, {Automatic, -8}},
 ShowSelection->True,
 TrackCellChangeTimes->False,
-FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (September 9, 2014)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -3160,113 +3159,113 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[579, 22, 82, 2, 144, "Title"],
-Cell[664, 26, 89, 2, 30, "Text"],
-Cell[756, 30, 144, 3, 30, "Text"],
-Cell[903, 35, 103, 2, 31, "Input"],
+Cell[579, 22, 74, 0, 156, "Title"],
+Cell[656, 24, 89, 2, 31, "Text"],
+Cell[748, 28, 136, 1, 31, "Text"],
+Cell[887, 31, 103, 2, 32, "Input"],
 Cell[CellGroupData[{
-Cell[1031, 41, 173, 2, 79, "Section"],
-Cell[1207, 45, 685, 23, 133, "Text"],
-Cell[1895, 70, 123, 3, 31, "Input"],
-Cell[2021, 75, 155, 6, 30, "Text"],
-Cell[2179, 83, 2166, 59, 152, "Input"],
-Cell[4348, 144, 626, 21, 31, "Input"],
-Cell[4977, 167, 157, 5, 31, "Input"]
+Cell[1015, 37, 173, 2, 67, "Section"],
+Cell[1191, 41, 685, 23, 141, "Text"],
+Cell[1879, 66, 123, 3, 32, "Input"],
+Cell[2005, 71, 155, 6, 32, "Text"],
+Cell[2163, 79, 2166, 59, 165, "Input"],
+Cell[4332, 140, 626, 21, 32, "Input"],
+Cell[4961, 163, 157, 5, 32, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5171, 177, 75, 1, 79, "Section"],
+Cell[5155, 173, 75, 1, 67, "Section"],
 Cell[CellGroupData[{
-Cell[5271, 182, 51, 0, 34, "Subsubsection"],
+Cell[5255, 178, 51, 0, 37, "Subsubsection"],
 Cell[CellGroupData[{
-Cell[5347, 186, 1530, 51, 95, "Input"],
-Cell[6880, 239, 3203, 112, 57, "Output"]
+Cell[5331, 182, 1530, 51, 163, "Input"],
+Cell[6864, 235, 3203, 112, 70, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10120, 356, 1530, 51, 95, "Input"],
-Cell[11653, 409, 3203, 112, 57, "Output"]
+Cell[10104, 352, 1530, 51, 163, "Input"],
+Cell[11637, 405, 3203, 112, 70, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14893, 526, 1218, 41, 56, "Input"],
-Cell[16114, 569, 2261, 78, 57, "Output"]
+Cell[14877, 522, 1218, 41, 105, "Input"],
+Cell[16098, 565, 2261, 78, 70, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18412, 652, 1218, 41, 56, "Input"],
-Cell[19633, 695, 2261, 78, 57, "Output"]
+Cell[18396, 648, 1218, 41, 105, "Input"],
+Cell[19617, 691, 2261, 78, 70, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21931, 778, 1482, 49, 95, "Input"],
-Cell[23416, 829, 3036, 107, 57, "Output"]
+Cell[21915, 774, 1482, 49, 142, "Input"],
+Cell[23400, 825, 3036, 107, 70, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26489, 941, 1482, 49, 95, "Input"],
-Cell[27974, 992, 3036, 107, 57, "Output"]
+Cell[26473, 937, 1482, 49, 142, "Input"],
+Cell[27958, 988, 3036, 107, 57, "Output"]
 }, Open  ]],
-Cell[31025, 1102, 210, 5, 31, "Input"],
-Cell[31238, 1109, 383, 11, 31, "Input"],
+Cell[31009, 1098, 210, 5, 31, "Input"],
+Cell[31222, 1105, 383, 11, 31, "Input"],
 Cell[CellGroupData[{
-Cell[31646, 1124, 136, 2, 31, "Input"],
-Cell[31785, 1128, 3155, 109, 58, "Output"]
+Cell[31630, 1120, 136, 2, 31, "Input"],
+Cell[31769, 1124, 3155, 109, 58, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34989, 1243, 106, 1, 34, "Subsubsection"],
-Cell[35098, 1246, 96, 2, 30, "Text"],
+Cell[34973, 1239, 106, 1, 34, "Subsubsection"],
+Cell[35082, 1242, 96, 2, 30, "Text"],
 Cell[CellGroupData[{
-Cell[35219, 1252, 1838, 53, 108, "Input"],
-Cell[37060, 1307, 4335, 151, 54, "Output"]
+Cell[35203, 1248, 1838, 53, 155, "Input"],
+Cell[37044, 1303, 4530, 154, 88, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41432, 1463, 176, 4, 31, "Input"],
-Cell[41611, 1469, 156, 5, 51, "Output"]
+Cell[41611, 1462, 176, 4, 32, "Input"],
+Cell[41790, 1468, 156, 5, 61, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41804, 1479, 1043, 33, 52, "Input"],
-Cell[42850, 1514, 38972, 1129, 423, "Output"]
+Cell[41983, 1478, 1043, 33, 55, "Input"],
+Cell[43029, 1513, 38972, 1129, 838, "Output"]
 }, Open  ]],
-Cell[81837, 2646, 459, 11, 92, "Input"],
-Cell[82299, 2659, 2748, 59, 624, "Program"],
+Cell[82016, 2645, 459, 11, 99, "Input"],
+Cell[82478, 2658, 2748, 59, 736, "Program"],
 Cell[CellGroupData[{
-Cell[85072, 2722, 107, 2, 23, "Print"],
-Cell[85182, 2726, 420, 10, 23, "Print"],
-Cell[85605, 2738, 115, 2, 23, "Print"],
-Cell[85723, 2742, 409, 10, 23, "Print"]
+Cell[85251, 2721, 107, 2, 23, "Print"],
+Cell[85361, 2725, 420, 10, 23, "Print"],
+Cell[85784, 2737, 115, 2, 23, "Print"],
+Cell[85902, 2741, 409, 10, 23, "Print"]
 }, Open  ]],
-Cell[86147, 2755, 560, 11, 31, "Output"],
+Cell[86326, 2754, 560, 11, 32, "Output"],
 Cell[CellGroupData[{
-Cell[86732, 2770, 130, 2, 31, "Input"],
-Cell[86865, 2774, 2085, 82, 33, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[88987, 2861, 58, 1, 31, "Input"],
-Cell[89048, 2864, 126, 3, 45, "Output"]
+Cell[86911, 2769, 130, 2, 32, "Input"],
+Cell[87044, 2773, 2085, 82, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[89211, 2872, 182, 4, 52, "Input"],
-Cell[89396, 2878, 59, 1, 30, "Output"]
+Cell[89166, 2860, 58, 1, 32, "Input"],
+Cell[89227, 2863, 126, 3, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[89390, 2871, 182, 4, 55, "Input"],
+Cell[89575, 2877, 59, 1, 31, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[89504, 2885, 41, 0, 43, "Subsection"],
-Cell[89548, 2887, 599, 20, 92, "Input"],
-Cell[90150, 2909, 47, 0, 30, "Text"],
-Cell[90200, 2911, 251, 7, 31, "Input"],
-Cell[90454, 2920, 102, 2, 30, "Text"],
+Cell[89683, 2884, 41, 0, 47, "Subsection"],
+Cell[89727, 2886, 599, 20, 99, "Input"],
+Cell[90329, 2908, 47, 0, 31, "Text"],
+Cell[90379, 2910, 251, 7, 32, "Input"],
+Cell[90633, 2919, 102, 2, 31, "Text"],
 Cell[CellGroupData[{
-Cell[90581, 2926, 4789, 124, 449, "Input"],
+Cell[90760, 2925, 4789, 124, 537, "Input"],
 Cell[CellGroupData[{
-Cell[95395, 3054, 449, 12, 23, "Print"],
-Cell[95847, 3068, 432, 11, 23, "Print"],
-Cell[96282, 3081, 206, 5, 23, "Print"],
-Cell[96491, 3088, 412, 11, 23, "Print"],
-Cell[96906, 3101, 212, 5, 23, "Print"]
+Cell[95574, 3053, 449, 12, 23, "Print"],
+Cell[96026, 3067, 432, 11, 23, "Print"],
+Cell[96461, 3080, 206, 5, 23, "Print"],
+Cell[96670, 3087, 412, 11, 23, "Print"],
+Cell[97085, 3100, 212, 5, 23, "Print"]
 }, Open  ]],
-Cell[97133, 3109, 173, 5, 30, "Output"]
+Cell[97312, 3108, 173, 5, 33, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[97343, 3119, 255, 7, 31, "Input"],
-Cell[97601, 3128, 169, 5, 30, "Output"]
+Cell[97522, 3118, 255, 7, 32, "Input"],
+Cell[97780, 3127, 169, 5, 33, "Output"]
 }, Open  ]],
-Cell[97785, 3136, 95, 2, 30, "Text"]
+Cell[97964, 3135, 95, 2, 31, "Text"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
