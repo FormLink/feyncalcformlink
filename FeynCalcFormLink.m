@@ -464,7 +464,7 @@ FeynCalcFormLink[exprin_, opts : OptionsPattern[]] :=
 	];
 
 (* Think about this for the next FeynCalc version, but for now :*)
-SetTF;
+(*SetTF;*)
 
 End[]
 
