@@ -88,12 +88,6 @@ SetTF :=
 		"TextInline" -> TraditionalForm}]
 	];
 
-(* this if missing in some FeynCalc versions *)
-HighEnergyPhysics`FeynCalc`fctools`FeynCalcExternal`Private`eps = Eps;
-
-(* FeynCalc 8 has this PageWidth -> 137 for ToString. However, in Mathematica 9 this gives slight trouble *)
-SetOptions[ToString, PageWidth -> Infinity];
-
 (* ::Section:: *)
 (*FC2Form & Form2FC*)
 
@@ -389,7 +383,7 @@ Options[FeynCalcFormLink] = {
 							Print -> True,
 							Replace -> {},
 							Style -> {Darker@Darker@N[Orange], FontFamily -> "Courier" }};
-FeynCalcFormLink[exprin_, opts : OptionsPattern[]] :=
+FeynCalcFormLink[exprin_, OptionsPattern[]] :=
 	Module[ {expr, (*fac = 1,*) fm1, fm2, frres, print, formtimestart,
 	res, totaltimestart, cprint},
 		cprint = Function[p, If[ p === False,
