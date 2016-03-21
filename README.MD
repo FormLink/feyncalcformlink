@@ -1,21 +1,26 @@
-﻿# FeynCalcFormLink
+# FeynCalcFormLink
 
 [![license: LGPLv3](https://img.shields.io/badge/license-LGPLv3-brightgreen.svg)](https://github.com/FormLink/feyncalcformlink/LICENSE.md)
 
 FeynCalcFormLink is a Mathematica package to link FeynCalc with FORM.
 
-FeynCalcFormLink was developed by Feng Feng and Rolf Mertig. The code is maintained
-by Feng Feng, Rolf Mertig and Vladyslav Shtabovenko
+FeynCalcFormLink was developed by Feng Feng and Rolf Mertig. The code is maintained by Feng Feng, Rolf Mertig and Vladyslav Shtabovenko
+
+# Installation
+
+To use FeynCalcFormLink you must install FeynCalc and FormLink first! Then
+
+	Import["https://raw.githubusercontent.com/FormLink/feyncalcformlink/master/install.m"]
+	InstallFeynCalcFormLink[]
+
 
 # License
 
 FeynCalcFormLink is covered by the GNU Lesser General Public License 3.
 
-Copyright (C) 2012-2015 Feng Feng
-
-Copyright (C) 2012-2015 Rolf Mertig
-
-Copyright (C) 2015 Vladyslav Shtabovenko
+Copyright (C) 2012-2016 Feng Feng 
+Copyright (C) 2012-2016 Rolf Mertig 
+Copyright (C) 2015-2016 Vladyslav Shtabovenko
 
 FeynCalcFormLink is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as
