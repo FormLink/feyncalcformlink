@@ -1,13 +1,6 @@
 
 Get @ FileNameJoin[{DirectoryName[FindFile[$Input]], "Config.m"}];
 
-(* this is just for FeynCalc 8 : surpressing the startup messages *)
-If[ Global`$FeynCalcStartupMessages === False,
-	If[ OwnValues[System`FeynCalcCellPrint]==={},
-		System`FeynCalcCellPrint = Hold;
-		SetAttributes[System`FeynCalcCellPrint, Protected]
-	]
-];
 (* Created by the Wolfram Workbench 22.08.2012 *)
 
 (* so FeynCalcFormLink loads FormLink and FeynCalc: *)
