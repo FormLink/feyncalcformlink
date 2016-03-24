@@ -81,25 +81,24 @@ SetTF :=
 		"TextInline" -> TraditionalForm}]
 	];
 
-(* ::Section:: *)
-(*FC2Form & Form2FC*)
-
 asciicheck[w_Symbol] :=
 	asciicheck[w] = Max[ToCharacterCode[ToString[w]]]<128;
 
-Options[FC2Form] = {Functions -> "CFunctions",
-					Dimension -> Automatic,
-					ExtraDeclare->{},
-					IDStatements -> {},
-(*                   Multiply -> 1,*)
-					Print -> True,
-					Replace->{}
-				};
+Options[FC2Form] = {
+	Functions -> "CFunctions",
+	Dimension -> Automatic,
+	ExtraDeclare->{},
+	IDStatements -> {},
+	Print -> True,
+	Replace->{}
+};
 
-FC2Form[exp_,OptionsPattern[]] :=
-	Module[ {script = {},VF,fci,f2mrules,lor,mom,tmp,Rlo,Rmo,iRlo,iRmo,in = 0,imax = 0, formmom, formvecs, formlor, forminds, symbols, dim, allDlors, extravars, idstatements,  subscripts,
-			extrasubsubst, extrasubstback, print, revrules, flo, dirmomto4, time, addgammaid,
-			sym, Rsy, iRsy, formlors, specheads, cfuns(*, mult*)},
+FC2Form[exp_, OptionsPattern[]] :=
+	Module[ {	script = {},VF,fci,f2mrules,lor,mom,tmp,Rlo,Rmo,iRlo,iRmo,in = 0,imax = 0,
+				formmom, formvecs, formlor, forminds, symbols, dim, allDlors, extravars,
+				idstatements,  subscripts, extrasubsubst, extrasubstback, print, revrules,
+				flo, dirmomto4, time, addgammaid, sym, Rsy, iRsy, formlors, specheads, cfuns},
+
 		dim = OptionValue[Dimension];
 		f2mrules = {(*$thiscontext -> "", *)
 				" "->"",
@@ -117,28 +116,36 @@ FC2Form[exp_,OptionsPattern[]] :=
 				"\\"->""
 				(*,"\n"->""*)
 		};
+
 		(*]]]]]]]   these brackets are just for vi ... *)
+
 		print = If[ OptionValue[Print],
 					print = Print,
 					print = Hold
 				];
+
 		If[ Global`$FLDebug,
 			print["simple FeynCalc preparation start"];
 		];
+
 		fci = exp // FCI // SUNSimplify // MomentumExpand // DiracGammaExpand // ScalarProductExpand;
+
 		If[ Global`$FLDebug,
 			print["simple FeynCalc preparation done"];
 		];
 
 		(* there can be Subscript[]'s *)
 		subscripts = Cases[fci, _Subscript, -1] // DeleteDuplicates;
-		extrasubsubst = Thread[ subscripts -> ( subscripts /. Subscript[a_, b_] :> ToExpression[ToString[a] <> "sub" <> ToString[b]] ) ];
+
+		extrasubsubst = Thread[ subscripts -> ( subscripts /. Subscript[a_, b_] :> ToExpression[ToString[a] <> "sub" <> ToString[b]] )];
 		extrasubstback = Reverse /@ extrasubsubst;
+
 		fci = fci /. extrasubsubst;
 		(*
 		gamma67opt = {(1-DiracGamma[5]) :> (2 DiracGamma[7]), (1+DiracGamma[5]) :> (2 DiracGamma[6])};
 		fci = fci /. gamma67opt;
 		*)
+
 		idstatements = StringTrim /@ Flatten[OptionValue[IDStatements]/. s_String:>
 					StringTrim[StringReplace[s, {"\n"->"", "\[IndentingNewLine]"->"","\t"->""}]] /. s_String :> (#<>";"&/@StringSplit[s, ";"])];
 		(* If[idstatements =!= {}, print["idstatements = ", idstatements//InputForm] ]; *)
@@ -153,6 +160,7 @@ FC2Form[exp_,OptionsPattern[]] :=
 			dirmomto4[{a,Momentum[pe],b,c}];
 		dirmomto4[x_List] :=
 			x;
+
 		(* this is the list of Momenta which will not get replaced by mom's *)
 		formmom = Union[Cases[fci, Momentum[p_Symbol /; asciicheck[p],___],{0,Infinity}]] // dirmomto4;
 		formvecs = Union[ formmom /. Momentum[p_Symbol,___]:> p ];
@@ -171,9 +179,9 @@ FC2Form[exp_,OptionsPattern[]] :=
 			];
 		];
 
-	(* find out which symbols are there *)
-	(* this will give a list of symbols which are not in the System` context, which should probably be fine almost always *)
-	(* this is the list of symbols which will not get replaced by sym's *)
+		(* find out which symbols are there *)
+		(* this will give a list of symbols which are not in the System` context, which should probably be fine almost always *)
+		(* this is the list of symbols which will not get replaced by sym's *)
 		symbols = Complement[Select[Select[Cases[fci, _Symbol, -1], (Context[Evaluate[#]]=!="System`")&], asciicheck], formvecs, forminds];
 		(* this is the list of symbols which will not get replaced by sym's, e.g., greek symbols *)
 		If[ StringQ[OptionValue[Functions]],
@@ -185,24 +193,27 @@ FC2Form[exp_,OptionsPattern[]] :=
 		];
 
 		(*get everything which is to be translated to CFunctions in FORM *)
-		(* Eps, LorentzIndex, Momentum, DiracTrace and DiracGamma get special treatment
-		*)
+		(* Eps, LorentzIndex, Momentum, DiracTrace and DiracGamma get special treatment *)
+
 		specheads = Join[{LorentzIndex, Momentum, Eps, DiracTrace, DiracGamma, Pair}, $M2Form[[All,1]]];
 		cfuns = Head /@ Cases[{(*mult,*)fci}, (h_Symbol /; (!MemberQ[specheads,h] && Context[h] =!= "System`"))[args__], -1];
 		cfuns = Union[cfuns];
 		extravars =
-		Cases[ToExpression /@
-		Select[
-			Select[idstatements, StringMatchQ[#, "id*=*;"] &] /.
-			s_String :> StringReplace[StringSplit[s, "="][[2]], ";" -> ""],
-			SyntaxQ], _Symbol, -1];
+			Cases[ToExpression /@
+			Select[
+				Select[idstatements, StringMatchQ[#, "id*=*;"] &] /.
+				s_String :> StringReplace[StringSplit[s, "="][[2]], ";" -> ""],
+				SyntaxQ], _Symbol, -1];
+
 		symbols = Union[symbols,extravars,Rsy[[All,2]]];
 		If[ dim =!= 4,
 			PrependTo[symbols,dim]
 		];
+
 		If[ Global`$FLDebug,
 			print["symbols = ", symbols];
 		];
+
 		Rlo = Thread[ lor -> Array[Symbol["lor" <> ToString[#]] &, Length@lor]];
 		iRlo = Reverse /@ Rlo;
 		If[ forminds=!={},
@@ -240,6 +251,7 @@ FC2Form[exp_,OptionsPattern[]] :=
 					z /. Plus -> holdplus //. plussubli /. holdplus -> Plus
 				]
 			];
+
 		tmp = FixedPoint[ addgammaid, tmp, 10];
 
 		(* *)
@@ -328,25 +340,34 @@ holdidentityrep = {
 	Hold[Identity][x_] :> x(*, Hold[Identity][x_,y__] :> Hold[x,y]*)
 };
 
-Options[Form2FC] = {Replace -> {}, FCE -> True};
+Options[Form2FC] = {
+	Replace -> {},
+	FCE -> True
+};
+
 Form2FC[exp_String] :=
 	Form2FC[exp,{}];
+
 Form2FC[exp_String, ReplaceBack:(_Rule|{___Rule}), OptionsPattern[] ] :=
 	Module[ {rule, tmp, res, rep, finalreplacements, m2rulerev},
+
 		rep = Flatten[{OptionValue[Replace]}];
 		tmp = "("<> exp <>  ")";
 		m2rulerev = $Form2M;
 		rule = Join[ Select[rep, MatchQ[#, _String -> _String]&], m2rulerev ];
 		tmp = StringReplace[tmp,rule];
 		tmp = ToExpression[tmp,TraditionalForm, Hold] /. ReplaceBack;
-		tmp = tmp /. { (*d$[z___]:>Pair[z], e$[a___]:>-I Eps[a], i$->I,*)
-					Dot[pe_,Power[qu_,n_Integer]]:>Dot[pe,qu]^n };
+		tmp = tmp /. {Dot[pe_,Power[qu_,n_Integer]]:>Dot[pe,qu]^n };
+
 		tmp = tmp /. ReplaceBack;
 		tmp = tmp /. Momentum[mo__][lo_LorentzIndex]:>Pair[Momentum[mo],lo];
+
 		If[ !FreeQ[tmp, Dot],
 			tmp = tmp /. Dot[pe_Momentum, qu_Momentum]:>Pair[pe,qu];
 		];
+
 		finalreplacements = Select[rep, !MatchQ[#, _String -> _String]& ];
+
 		(* the idea is to use DotSimplify later on, but we have to do this first: *)
 		Block[ {Times},
 			tmp = ReleaseHold[tmp] /. holdidentityrep;
@@ -354,99 +375,123 @@ Form2FC[exp_String, ReplaceBack:(_Rule|{___Rule}), OptionsPattern[] ] :=
 				tmp = DotSimplify[tmp/. Times -> Dot]
 			];
 		];
+
 		If[ OptionValue[FCE]===True,
 			finalreplacements = FCE[finalreplacements]
 		];
 		If[ OptionValue[FCE]===True,
 			tmp = FCE[tmp]
 		];
+
 		If[ !FreeQ[tmp, Dot],
 			tmp = tmp/. FormLink`$DotPowerFix
 		];
+
 		res = tmp /. finalreplacements;
 		res
 	];
 
 Options[FeynCalcFormLink] = {
-							Functions -> "CFunctions", FCE->True,
-							FormSetup :> $FormSetup,
-							Form2FC -> Form2FC,
-							ExtraDeclare -> {},
-							IDStatements -> {},
-							Print -> True,
-							Replace -> {},
-							Style -> {Darker@Darker@N[Orange], FontFamily -> "Courier" }};
+	Functions -> "CFunctions", FCE->True,
+	FormSetup :> $FormSetup,
+	Form2FC -> Form2FC,
+	ExtraDeclare -> {},
+	IDStatements -> {},
+	Print -> True,
+	Replace -> {},
+	Style -> {Darker@Darker@N[Orange], FontFamily -> "Courier" }
+};
+
 FeynCalcFormLink[exprin_, OptionsPattern[]] :=
-	Module[ {expr, (*fac = 1,*) fm1, fm2, frres, print, formtimestart,
-	res, totaltimestart, cprint},
-		cprint = Function[p, If[ p === False,
-								Hold,
-								p /. True -> CellPrint
-							]]@OptionValue[Print];
+	Module[ {expr,  fm1, fm2, frres, print, formtimestart, res, totaltimestart, cprint},
+
+		cprint = Function[p,
+			If[	p === False,
+				Hold,
+				p /. True -> CellPrint]]@OptionValue[Print];
+
 		totaltimestart = AbsoluteTime[];
 		Catch[
 
-		expr = FCI[exprin] /. DiracTrace[bla_ /; FreeQ2[bla,{DiracGamma, SUNT}] ] :> (bla DiracTrace[1]);
-	(*
-	somehow this whole factoring out and multiplying back is not easy to do. TODO: fix this sometime later
-	If[(!FreeQ[expr, DiracTrace] ) &&  (!FreeQ[expr, DiracGamma]) &&
-		(Head[expr] === Times), fac = Select[expr, FreeQ2[#,{ DiracGamma, LorentzIndex }]&] /. DiracTrace -> TR ; expr = expr/fac, fac = 1];
-	*)
-		{fm1, fm2} =
-		FC2Form[expr, IDStatements -> OptionValue[IDStatements],
-			Replace -> OptionValue[Replace],
+			expr = FCI[exprin] /. DiracTrace[bla_ /; FreeQ2[bla,{DiracGamma, SUNT}] ] :> (bla DiracTrace[1]);
+			(*
+			somehow this whole factoring out and multiplying back is not easy to do. TODO: fix this sometime later
+			If[(!FreeQ[expr, DiracTrace] ) &&  (!FreeQ[expr, DiracGamma]) &&
+			(Head[expr] === Times), fac = Select[expr, FreeQ2[#,{ DiracGamma, LorentzIndex }]&] /. DiracTrace -> TR ; expr = expr/fac, fac = 1];
+			*)
+			{fm1, fm2} =
+				FC2Form[expr,	IDStatements -> OptionValue[IDStatements],
+								Replace -> OptionValue[Replace],
 		(*       Multiply -> fac,*) (* that seems not to be right ... *)
-			Functions -> OptionValue[Functions],
-		ExtraDeclare -> OptionValue[ExtraDeclare]];
-		print = OptionValue[Print];
-		If[ print === True,
-			print = Print,
-			print = Hold
-		];
-		If[ Global`$FLDebug,
-			print["DEBUGF1 = ",fm1];
-			print["DEBUGF2 = ",fm2];
-			Global`DEBUGF1 = fm1;
-			Global`DEBUGF2 = fm2;
-		];
-		(*
-		If[fac =!= 1,
-			print["The Form program generated by FC2Form is, up to the global factor  ", fac//TraditionalForm," : "],
-			print["The Form program generated by FC2Form is: "];
-		];
-		*)
+								Functions -> OptionValue[Functions],
+								ExtraDeclare -> OptionValue[ExtraDeclare]];
+			print = OptionValue[Print];
+			If[ print === True,
+				print = Print,
+				print = Hold
+			];
 
-		(* CellPrint here enables easy copy and paste in the FrontEnd ... *)
-		If[ $FrontEnd =!= Null,
-			cprint@Cell[TextData[ExportString[fm1, "Text"]], FormLink`$FormOutputCellStyle, OptionValue[Style]],
-			print@ExportString[fm1, "Text"]
-		];
-		FormStart[Print -> OptionValue[Print]];
-		formtimestart = AbsoluteTime[];
-		print["Piping the script to FORM and running FORM"];
-		FormWrite[StringReplace[fm1,"\n"->""]];
-		frres = FormRead[];
-		If[ !StringFreeQ[frres,{"gi_","g_"}],
-			print["there are still gi_ or g_ expressions in the FORM output. Did you forget to put DiracTrace around the FeynCalcFormLink input?. Returning the input."];
-			Throw[exprin]
-		];
-		Uninstall[FormLink`$FormLink];
-		print["Time needed by FORM : ", Round[(AbsoluteTime[]-formtimestart) 1000]/1000.," seconds. FORM finished. Got the result back to Mathematica as a string."];
-		print["Start translation to Mathematica / FeynCalc syntax"];
-		If[ Global`$FLDebug,
-			Global`FRRES = frres;
-			Global`FM2 = fm2
-		];
-		If[ OptionValue[Form2FC]===Form2FC,
-			res = Form2FC[frres, fm2, FCE -> OptionValue[FCE], Replace -> OptionValue[Replace]],
-			res = OptionValue[Form2FC][frres]
-		];
-		print["Total wall clock time used: ", Round[(AbsoluteTime[]-totaltimestart) 100]/100. ," seconds. Translation to Mathematica and FeynCalc finished."];
-		If[ !FreeQ[res,NonCommutativeMultiply],
-			res = DotSimplify[res/. NonCommutativeMultiply -> Dot]
-		];
-		res = Switch[OptionValue[FCE], True, FCE[res], False, FCI[res],  _Symbol, OptionValue[FCE][res]];
-		res
+			If[ Global`$FLDebug,
+				print["DEBUGF1 = ",fm1];
+				print["DEBUGF2 = ",fm2];
+				Global`DEBUGF1 = fm1;
+				Global`DEBUGF2 = fm2;
+			];
+			(*
+			If[fac =!= 1,
+				print["The Form program generated by FC2Form is, up to the global factor  ", fac//TraditionalForm," : "],
+				print["The Form program generated by FC2Form is: "];
+			];
+			*)
+
+			(* CellPrint here enables easy copy and paste in the FrontEnd ... *)
+			If[ $FrontEnd =!= Null,
+				cprint@Cell[TextData[ExportString[fm1, "Text"]], FormLink`$FormOutputCellStyle, OptionValue[Style]],
+				print@ExportString[fm1, "Text"]
+			];
+
+			FormStart[Print -> OptionValue[Print]];
+			formtimestart = AbsoluteTime[];
+			print["Piping the script to FORM and running FORM"];
+
+			FormWrite[StringReplace[fm1,"\n"->""]];
+			frres = FormRead[];
+			If[ !StringFreeQ[frres,{"gi_","g_"}],
+				print["there are still gi_ or g_ expressions in the FORM output. Did you forget to put DiracTrace around the FeynCalcFormLink input?. Returning the input."];
+				Throw[exprin]
+			];
+
+			Uninstall[FormLink`$FormLink];
+			print["Time needed by FORM : ", Round[(AbsoluteTime[]-formtimestart) 1000]/1000.,
+				" seconds. FORM finished. Got the result back to Mathematica as a string."];
+			print["Start translation to Mathematica / FeynCalc syntax"];
+
+			If[ Global`$FLDebug,
+				Global`FRRES = frres;
+				Global`FM2 = fm2
+			];
+
+			If[ OptionValue[Form2FC]===Form2FC,
+				res = Form2FC[frres, fm2, FCE -> OptionValue[FCE], Replace -> OptionValue[Replace]],
+				res = OptionValue[Form2FC][frres]
+			];
+
+			print["Total wall clock time used: ", Round[(AbsoluteTime[]-totaltimestart) 100]/100. ,
+				" seconds. Translation to Mathematica and FeynCalc finished."];
+
+			If[ !FreeQ[res,NonCommutativeMultiply],
+				res = DotSimplify[res/. NonCommutativeMultiply -> Dot]
+			];
+			res = Switch[
+						OptionValue[FCE],
+						True,
+						FCE[res],
+						False,
+						FCI[res],
+						_Symbol,
+						OptionValue[FCE][res]
+			];
+			res
 		]
 	];
 
