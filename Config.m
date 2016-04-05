@@ -1,5 +1,5 @@
 (* Mathematica package *)
-
+(*
 If[ !ValueQ[Global`$FormLinkStartupMessages],
 	Global`$FormLinkStartupMessages = False
 ];
@@ -10,3 +10,4 @@ If[ !ValueQ[FeynCalcFormLink`$UseFormEpsConvention],
 	FeynCalcFormLink`$UseFormEpsConvention = True
 ];
 
+*)

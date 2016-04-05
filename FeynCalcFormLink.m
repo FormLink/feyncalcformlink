@@ -1,5 +1,22 @@
 
-Get @ FileNameJoin[{DirectoryName[FindFile[$Input]], "Config.m"}];
+If[ ValueQ[Global`$UseFormEpsConvention],
+	FeynCalcFormLink`$UseFormEpsConvention = Global`$UseFormEpsConvention;
+	Remove[Global`$UseFormEpsConvention],
+	FeynCalcFormLink`$UseFormEpsConvention = True;
+	Remove[Global`$UseFormEpsConvention]
+];
+
+If[ ValueQ[Global`$FormLinkStartupMessages],
+	FeynCalcFormLink`$FormLinkStartupMessages = Global`$FormLinkStartupMessages;
+	Remove[Global`$FormLinkStartupMessages],
+	FeynCalcFormLink`$FormLinkStartupMessages = False;
+	Remove[Global`$FormLinkStartupMessages]
+];
+
+(* 	Load the configuration file. Like in FeynCalc, Config.m beats
+	user supplied options *)
+Get@FileNameJoin[{DirectoryName[FindFile[$Input]], "Config.m"}];
+
 
 (* Created by the Wolfram Workbench 22.08.2012 *)
 
@@ -61,7 +78,7 @@ Begin["`Private`"]
 (* Implementation of the package *)
 (* ::Package:: *)
 
-If[ FeynCalcFormLink`$UseFormEpsConvention === True,
+If[ $UseFormEpsConvention === True,
 	$LeviCivitaSign = -I
 ];
 
