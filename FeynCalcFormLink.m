@@ -100,6 +100,10 @@ FORMResultVariable::usage="";
 "FORMResultVariable is an option for FC2Form and FeynCalcFormLink. It specifies the local variable (in the FORM script) that \
 contains the result of the FORM calculation.";
 
+FC2FormSave::usage=
+"FC2FormSave[expr,path] is like FC2Form, with the distinction that it saves the created FORM scipt to the location specified \
+in path.";
+
 Protect[e$, i$, d$, g$,gi$,g5$,g6$,g7$];
 
 
@@ -404,6 +408,23 @@ FC2Form[exp_, OptionsPattern[]] :=
 
 (* FCE -> True means that the result is converted to FeynCalcExternal format, i.e., no Pair's, just FV's and SP's etc. *)
 
+Options[FC2FormSave] =
+	Options[FC2Form];
+
+FC2FormSave[expr_, path_String, opts:OptionsPattern[]]:=
+	Block[{file,tmp},
+
+		tmp = FC2Form[expr, Flatten[Join[{opts}, FilterRules[Options[FC2Form], Except[{opts}]]]]][[1]];
+
+		If [Head[tmp]=!=List,
+			Print["sth went wrong!"];
+			Abort[]
+		];
+
+		file = OpenWrite[path];
+		WriteString[file, # <> "\n"] & /@ tmp;
+		Close[file];
+	];
 
 
 (* needed for replacing [ ] the right way; see also in Config.m (of FormLinnk.m) :
