@@ -30,35 +30,42 @@ If[ {FindFile["FeynCalc`"], FindFile["FeynCalc`"] }=== {$Failed,$Failed},
 
 BeginPackage["FeynCalcFormLink`", {"FormLink`", "FeynCalc`"}]
 
-(* This can be set in Config.m *)
-
-
-$UseFormEpsConvention::usage = "$UseFormEpsConvention is set to True by default and sets FeynCalc $LeviCivitaSign=-I, \
+$UseFormEpsConvention::usage =
+"$UseFormEpsConvention is set to True by default and sets FeynCalc $LeviCivitaSign=-I, \
 i.e., the same convention for traces involving Gamma[5] as in FORM, when FeynCalcFormLink is loaded.";
 
-Functions::usage = "Functions is an option to FeynCalcFormLink. If set to \"CFunctions\", then all non-System` functions,\
+Functions::usage =
+"Functions is an option to FeynCalcFormLink. If set to \"CFunctions\", then all non-System` functions,\
 except those present in $M2Form and some FeynCalc functions, are automatically declared CFunctions in FORM. \
 If Functions is set to \"Functions\", then they declare noncommutative functions \"Functions\" in FORM.";
 
-ExtraDeclare::usage = "ExtraDeclare is an option to FeynCalcFormLink, a list containing extra decalaration which will \
+ExtraDeclare::usage =
+"ExtraDeclare is an option to FeynCalcFormLink, a list containing extra decalaration which will \
 be sent to FORM."
 
-FC2Form::usage = "FC2Form[expr] translates expr to FORM.";
+FC2Form::usage =
+"FC2Form[expr] translates expr to FORM.";
 
-FeynCalcFormLink::usage = "FeynCalcFormLink[expr] translates the FeynCalc expression expr to FORM, calculates it, pipes it back \
+FeynCalcFormLink::usage =
+"FeynCalcFormLink[expr] translates the FeynCalc expression expr to FORM, calculates it, pipes it back \
 to Mathematica and translates it to FeynCalc syntax."
 
-Form2FC::usage = "Form2FC[str] translates str to FeynCalc syntax. Form2FC has an option Replace.";
+Form2FC::usage =
+"Form2FC[str] translates str to FeynCalc syntax. Form2FC has an option Replace.";
 
-IDStatements::usage = "IDStatements is an option to FC2Form and can be set to a string or a list of strings like \"id k1.k1=mass^2\".";
+IDStatements::usage =
+"IDStatements is an option to FC2Form and can be set to a string or a list of strings like \"id k1.k1=mass^2\".";
 
 (*
-Multiply::usage="Multiply is an option to FC2Form."
+Multiply::usage=
+"Multiply is an option to FC2Form."
 *)
 
-SetSF::usage = "SetSF set the default Format output type to StandardForm."
+SetSF::usage =
+"SetSF set the default Format output type to StandardForm."
 
-SetTF::usage = "SetTF sets the default Format output type to TraditionalForm (for FeynCalc formatting).";
+SetTF::usage =
+"SetTF sets the default Format output type to TraditionalForm (for FeynCalc formatting).";
 
 (* this is not *necessary*, but helps for ToString ... *)
 (* no need to give usage messages, since it is just for convenience of translating from M to FORM via ToString *)
@@ -515,7 +522,7 @@ FeynCalcFormLink[exprin_, OptionsPattern[]] :=
 
 		totaltimestart = AbsoluteTime[];
 		Catch[
-
+			(* TODO: Use FCTraceFactor here! *)
 			expr = FCI[exprin] /. DiracTrace[bla_ /; FreeQ2[bla,{DiracGamma, SUNT}] ] :> (bla DiracTrace[1]);
 			(*
 			somehow this whole factoring out and multiplying back is not easy to do. TODO: fix this sometime later
