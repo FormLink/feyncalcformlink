@@ -33,20 +33,20 @@ BeginPackage["FeynCalcFormLink`", {"FormLink`", "FeynCalc`"}]
 (* This can be set in Config.m *)
 
 
-$UseFormEpsConvention::usage = "$UseFormEpsConvention is set to True by default and sets FeynCalc $LeviCivitaSign=-I , i.e., the
-same convention for traces involving Gamma[5] as in FORM, when FeynCalcFormLink is loaded. $UseFormEpsConvention should be set
-in the Config.m file only.";
+$UseFormEpsConvention::usage = "$UseFormEpsConvention is set to True by default and sets FeynCalc $LeviCivitaSign=-I, \
+i.e., the same convention for traces involving Gamma[5] as in FORM, when FeynCalcFormLink is loaded.";
 
-Functions::usage = "Functions is an option to FeynCalcFormLink. If set to \"CFunctions\", then all non-System` functions,
-except those present in $M2Form and some FeynCalc functions, are automatically declared CFunctions in FORM.
+Functions::usage = "Functions is an option to FeynCalcFormLink. If set to \"CFunctions\", then all non-System` functions,\
+except those present in $M2Form and some FeynCalc functions, are automatically declared CFunctions in FORM. \
 If Functions is set to \"Functions\", then they declare noncommutative functions \"Functions\" in FORM.";
 
-ExtraDeclare::usage = "ExtraDeclare is an option to FeynCalcFormLink, a list
-containing extra decalaration which will be sent to FORM."
+ExtraDeclare::usage = "ExtraDeclare is an option to FeynCalcFormLink, a list containing extra decalaration which will \
+be sent to FORM."
 
 FC2Form::usage = "FC2Form[expr] translates expr to FORM.";
 
-FeynCalcFormLink::usage = "FeynCalcFormLink[expr] translates the FeynCalc expression expr to FORM, calculates it, pipes it back to Mathematica and translates it to FeynCalc syntax."
+FeynCalcFormLink::usage = "FeynCalcFormLink[expr] translates the FeynCalc expression expr to FORM, calculates it, pipes it back \
+to Mathematica and translates it to FeynCalc syntax."
 
 Form2FC::usage = "Form2FC[str] translates str to FeynCalc syntax. Form2FC has an option Replace.";
 
