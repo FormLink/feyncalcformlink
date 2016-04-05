@@ -71,6 +71,35 @@ g5$;
 g6$;
 g7$;
 
+FCPrepare::usage=
+"FCPrepare is an option for FC2Form and FeynCalcFormLink. When set to True, FeynCalc will perform some \
+simplifications of the given expression before sending it to FORM.";
+
+FORMTrace::usage=
+"FORMTrace is an option for FC2Form and FeynCalcFormLink. When set to True, a FORM command for the trace \
+computation will be added to the end of the FORM script.";
+
+FORMContract::usage=
+"FORMContract is an option for FC2Form and FeynCalcFormLink. When set to True, a FORM command for the contractions of \
+epsilon tensors will be added to the end of the FORM script.";
+
+FORMSort::usage=
+"FORMSort is an option for FC2Form and FeynCalcFormLink. When set to True, a .sort command  \
+will be added to the end of the FORM script.";
+
+FORMScriptEpilog::usage=
+"FORMScriptEpilog is an option for FC2Form and FeynCalcFormLink. It specifies the very last commands added at  \
+the end of the FORM script.";
+
+
+FORMScriptProlog::usage=
+"FORMScriptProlog is an option for FC2Form and FeynCalcFormLink. It specifies the very first commands added at  \
+the beginning of the FORM script.";
+
+FORMResultVariable::usage="";
+"FORMResultVariable is an option for FC2Form and FeynCalcFormLink. It specifies the local variable (in the FORM script) that \
+contains the result of the FORM calculation.";
+
 Protect[e$, i$, d$, g$,gi$,g5$,g6$,g7$];
 
 
@@ -107,7 +136,14 @@ Options[FC2Form] = {
 	ExtraDeclare->{},
 	IDStatements -> {},
 	Print -> True,
-	Replace->{}
+	Replace->{},
+	FCPrepare -> True,
+	FORMTrace -> True,
+	FORMContract ->True,
+	FORMSort ->True,
+	FORMResultVariable -> "resFL",
+	FORMScriptEpilog -> {"#call put(\"%E\", resFL)","#fromexternal"},
+	FORMScriptProlog -> {}
 };
 
 FC2Form[exp_, OptionsPattern[]] :=
@@ -145,7 +181,11 @@ FC2Form[exp_, OptionsPattern[]] :=
 			print["simple FeynCalc preparation start"];
 		];
 
-		fci = exp // FCI // SUNSimplify // MomentumExpand // DiracGammaExpand // ScalarProductExpand;
+		fci = exp // FCI;
+
+		If[OptionValue[FCPrepare],
+			fci = fci// SUNSimplify // MomentumExpand // DiracGammaExpand // ScalarProductExpand;
+		];
 
 		If[ Global`$FLDebug,
 			print["simple FeynCalc preparation done"];
@@ -296,6 +336,11 @@ FC2Form[exp_, OptionsPattern[]] :=
 		tmp = tmp/.OptionValue[Replace];
 		tmp = ToString[tmp,InputForm, PageWidth -> FormLink`$FormPageWidth];
 		tmp = StringReplace[tmp, Join[$M2Form, f2mrules]];
+
+		If[OptionValue[FORMScriptProlog]=!={},
+			AppendTo[script,#]&/@OptionValue[FORMScriptProlog];
+		];
+
 		If[ forminds =!= {},
 			AppendTo[script, "Indices " <> Apply[StringJoin, Riffle[ToString/@forminds,","]]<>";"]
 		];
@@ -325,19 +370,32 @@ FC2Form[exp_, OptionsPattern[]] :=
 			AppendTo[script,OptionValue[Functions]<> " " <> Apply[StringJoin, Riffle[ToString/@cfuns,","]]<>";"]
 		];
 		AppendTo[script, "Format Mathematica;"];
-		AppendTo[script,"L resFL = ("<>tmp<>");"];
-		Table[AppendTo[script, StringJoin["trace", If[ dim ===4,
-													"4",
-													"n"
-												], ",",ToString[in],";"]],{in,1,imax}];
-		AppendTo[script,"contract 0;"];
-		AppendTo[script,".sort;"];
+		AppendTo[script,"L "<>OptionValue[FORMResultVariable]<>" = ("<>tmp<>");"];
+
+
+
+		If[OptionValue[FORMTrace],
+			Table[AppendTo[script, StringJoin["trace", If[ dim ===4,
+														"4",
+														"n"
+													], ",",ToString[in],";"]],{in,1,imax}]
+		];
+
+		If[OptionValue[FORMContract],
+			AppendTo[script,"contract 0;"]
+		];
+		If[OptionValue[FORMSort],
+			AppendTo[script,".sort;"]
+		];
 		If[ idstatements =!= {},
 			Scan[AppendTo[script,#]&,idstatements];
 			AppendTo[script,".sort;"];
 		];
-		AppendTo[script, "#call put(\"%E\", resFL)"];
-		AppendTo[script, "#fromexternal"];
+
+		If[OptionValue[FORMScriptEpilog]=!={},
+			AppendTo[script,#]&/@OptionValue[FORMScriptEpilog];
+		];
+
 		(*AppendTo[script,".sort"];*)
 		(*AppendTo[script,".end"];*)
 		revrules = Flatten[{Table[Reverse[x],{x,OptionValue[Replace]}],iRlo,iRmo, iRsy}]//Union;
@@ -409,14 +467,21 @@ Form2FC[exp_String, ReplaceBack:(_Rule|{___Rule}), OptionsPattern[] ] :=
 	];
 
 Options[FeynCalcFormLink] = {
-	Functions -> "CFunctions", FCE->True,
+	Functions -> "CFunctions",
+	FCE->True,
 	FormSetup :> $FormSetup,
 	Form2FC -> Form2FC,
 	ExtraDeclare -> {},
 	IDStatements -> {},
 	Print -> True,
 	Replace -> {},
-	Style -> {Darker@Darker@N[Orange], FontFamily -> "Courier" }
+	Style -> {Darker@Darker@N[Orange], FontFamily -> "Courier" },
+	FCPrepare -> True,
+	FORMTrace -> True,
+	FORMContract ->True,
+	FORMSort ->True,
+	FORMScriptEpilog -> {"#call put(\"%E\", resFL)","#fromexternal"},
+	FORMScriptProlog -> {}
 };
 
 FeynCalcFormLink[exprin_, OptionsPattern[]] :=
@@ -441,7 +506,14 @@ FeynCalcFormLink[exprin_, OptionsPattern[]] :=
 								Replace -> OptionValue[Replace],
 		(*       Multiply -> fac,*) (* that seems not to be right ... *)
 								Functions -> OptionValue[Functions],
-								ExtraDeclare -> OptionValue[ExtraDeclare]];
+								ExtraDeclare -> OptionValue[ExtraDeclare],
+								FCPrepare -> OptionValue[FCPrepare],
+								FORMTrace -> OptionValue[FORMTrace],
+								FORMContract -> OptionValue[FORMContract],
+								FORMSort -> OptionValue[FORMSort],
+								FORMScriptEpilog -> OptionValue[FORMScriptEpilog],
+								FORMScriptProlog -> OptionValue[FORMScriptProlog]
+								];
 			print = OptionValue[Print];
 			If[ print === True,
 				print = Print,
@@ -473,10 +545,10 @@ FeynCalcFormLink[exprin_, OptionsPattern[]] :=
 
 			FormWrite[StringReplace[fm1,"\n"->""]];
 			frres = FormRead[];
-			If[ !StringFreeQ[frres,{"gi_","g_"}],
+			(*If[ !StringFreeQ[frres,{"gi_","g_"}],
 				print["there are still gi_ or g_ expressions in the FORM output. Did you forget to put DiracTrace around the FeynCalcFormLink input?. Returning the input."];
 				Throw[exprin]
-			];
+			];*)
 
 			Uninstall[FormLink`$FormLink];
 			print["Time needed by FORM : ", Round[(AbsoluteTime[]-formtimestart) 1000]/1000.,
