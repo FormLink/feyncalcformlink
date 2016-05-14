@@ -161,7 +161,8 @@ FC2Form[exp_, OptionsPattern[]] :=
 	Module[ {	script = {},VF,fci,f2mrules,lor,mom,tmp,Rlo,Rmo,iRlo,iRmo,in = 0,imax = 0,
 				formmom, formvecs, formlor, forminds, symbols, dim, allDlors, extravars,
 				idstatements,  subscripts, extrasubsubst, extrasubstback, print, revrules,
-				flo, dirmomto4, time, addgammaid, sym, Rsy, iRsy, formlors, specheads, cfuns},
+				flo, dirmomto4, time, addgammaid, sym, Rsy, iRsy, formlors, specheads, cfuns,
+				stringsubst, stringsubstback},
 
 		dim = OptionValue[Dimension];
 		f2mrules = {(*$thiscontext -> "", *)
@@ -202,9 +203,15 @@ FC2Form[exp_, OptionsPattern[]] :=
 			print["simple FeynCalc preparation done"];
 		];
 
+		(*take care of strings*)
+
+		stringsubst = Map[Rule[#, Unique["strVar"]] &, Union[Cases[fci, _String, Infinity]]];
+		stringsubstback = Reverse /@ stringsubst;
+		fci = fci /. stringsubst;
+
+		Global`xx = fci;
 		(* there can be Subscript[]'s *)
 		subscripts = Cases[fci, _Subscript, -1] // DeleteDuplicates;
-
 		extrasubsubst = Thread[ subscripts -> ( subscripts /. Subscript[a_, b_] :> ToExpression[ToString[a] <> "sub" <> ToString[b]] )];
 		extrasubstback = Reverse /@ extrasubsubst;
 
@@ -213,6 +220,7 @@ FC2Form[exp_, OptionsPattern[]] :=
 		gamma67opt = {(1-DiracGamma[5]) :> (2 DiracGamma[7]), (1+DiracGamma[5]) :> (2 DiracGamma[6])};
 		fci = fci /. gamma67opt;
 		*)
+
 
 		idstatements = StringTrim /@ Flatten[OptionValue[IDStatements]/. s_String:>
 					StringTrim[StringReplace[s, {"\n"->"", "\[IndentingNewLine]"->"","\t"->""}]] /. s_String :> (#<>";"&/@StringSplit[s, ";"])];
@@ -410,7 +418,7 @@ FC2Form[exp_, OptionsPattern[]] :=
 		(*AppendTo[script,".sort"];*)
 		(*AppendTo[script,".end"];*)
 		revrules = Flatten[{Table[Reverse[x],{x,OptionValue[Replace]}],iRlo,iRmo, iRsy}]//Union;
-		{script,Join[extrasubstback, revrules]}
+		{script,Join[stringsubstback,extrasubstback, revrules]}
 	];
 
 (* FCE -> True means that the result is converted to FeynCalcExternal format, i.e., no Pair's, just FV's and SP's etc. *)
